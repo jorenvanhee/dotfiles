@@ -9,6 +9,7 @@ alias ga 'git add .'
 alias gs 'git status'
 alias l 'ls -l'
 alias la 'ls -al'
+alias a 'php artisan'
 
 # List all directories (also the ones starting with a dot).
 alias lsd 'ls -ld .*/ */'
