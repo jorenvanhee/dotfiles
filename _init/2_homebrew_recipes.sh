@@ -7,6 +7,7 @@ brew upgrade
 brew install z
 brew install stow
 brew install vim
+brew install git
 
 brew install fish
 read -r -p "Do you want to make fish your default shell? (y/n) " response
