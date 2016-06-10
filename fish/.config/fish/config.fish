@@ -1,5 +1,12 @@
 set fish_greeting ''
 
+
+# source stuff
+# ============
+
+source ~/.config/fish/path.fish
+
+
 # aliases
 # =======
 
