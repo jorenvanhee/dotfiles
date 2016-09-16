@@ -17,6 +17,7 @@ alias gs 'git status'
 alias l 'ls -l'
 alias la 'ls -al'
 alias a 'php artisan'
+alias phpspec './vendor/phpspec/phpspec/bin/phpspec'
 
 # List all directories (also the ones starting with a dot).
 alias lsd 'ls -ld .*/ */'
