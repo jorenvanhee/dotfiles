@@ -18,6 +18,7 @@ alias l 'ls -l'
 alias la 'ls -al'
 alias a 'php artisan'
 alias phpspec './vendor/phpspec/phpspec/bin/phpspec'
+alias phpunit './vendor/bin/phpunit'
 
 # List all directories (also the ones starting with a dot).
 alias lsd 'ls -ld .*/ */'
