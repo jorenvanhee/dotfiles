@@ -3,10 +3,21 @@
 "http://stackoverflow.com/questions/16082991/vim-switching-between-files-rapidly-using-vanilla-vim-no-plugins
 "https://github.com/Valloric/YouCompleteMe
 
-syntax on               "Turn on syntax highlighting
+"Turn on syntax highlighting
+syntax on
 
-set hidden      "Allow switching to another buffer with changes in the current one
-set wildmenu    "Visual autocomplete for command menu
+"Allow switching to another buffer with changes in the current one
+set hidden
+
+"Visual autocomplete for command menu
+set wildmenu
+
+"Make backpace behave like in every other editor
+set backspace=indent,eol,start
+
+"Set the shell to bash, because I'm using fish shell and that was causing
+"some issues with the CtrlP plugin (CtrlPBufTag command).
+set shell=/bin/bash
 
 
 
@@ -16,6 +27,8 @@ set wildmenu    "Visual autocomplete for command menu
 call plug#begin('~/.vim/plugged')
 
 Plug 'altercation/vim-colors-solarized'
+Plug 'scrooloose/nerdtree'
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
@@ -24,28 +37,40 @@ call plug#end()
 
 
 "------------Spaces and tabs-----------"
-set expandtab       "Turn tabs into spaces
-set tabstop=4       "Number of spaces a tab counts for
-set softtabstop=4   "Number of spaces added/removed with tab/backspace
-set shiftwidth=4    "Number of spaces added with reindent operations (<< & >>)
+"set expandtab       "Turn tabs into spaces
+"set tabstop=4       "Number of spaces a tab counts for
+"set softtabstop=4   "Number of spaces added/removed with tab/backspace
+"set shiftwidth=4    "Number of spaces added with reindent operations (<< & >>)
 
 
 
 
 
 "------------Search-----------"
-set hlsearch    "Highlight all results
-set incsearch   "Start searching while typing
-set ignorecase  "Case insensitive pattern matching
-set smartcase   "Switch to case sensitive if you use any capital letters
+
+"Highlight all results
+set hlsearch
+
+"Start searching while typing
+set incsearch
+
+"Case insensitive pattern matching
+set ignorecase
+
+"Switch to case sensitive if you use any capital letters
+set smartcase
 
 
 
 
 
 "------------Windows-----------"
-set splitbelow  "When splitting window, open window below
-set splitright  "When splitting window, open window right
+
+"When splitting window, open window below
+set splitbelow
+
+"When splitting window, open window right
+set splitright
 
 "Better window navigation
 nmap <C-J> <C-W><C-J>
@@ -58,20 +83,34 @@ nmap <C-L> <C-W><C-L>
 
 
 "------------Visuals-----------"
-" number combined with relativenumber works in Vim 7.4+
-set number              "Set line numbers, if relativenumber, 0 becomes line number
-set relativenumber      "Set relative line numbers
 
-set cursorline          "Highlight current line
-set guioptions-=e       "Remove gui tabs
+"Number combined with relativenumber works in Vim 7.4+
+"Set line numbers, if relativenumber, 0 becomes line number
+set number
 
-set t_Co=256
+"Set relative line numbers
+set relativenumber
+
+"Highlight current line
+set cursorline
+
+"Remove gui tabs
+set guioptions-=e
+
+"set t_Co=256
 set guifont=Fira_Code:h14
-set linespace=10 "Macvim-specific line-height
 
-set background=light
-let g:solarized_termcolors=256 "This is for iTerm and terminal
+"Macvim-specific line-height
+set linespace=10
+
+"This is for iTerm and terminal
+let g:solarized_termcolors=256
+
+"Set colorscheme
 colorscheme solarized
+
+"Light or dark
+set background=light
 
 "Disable Gui scrollbars.
 set guioptions-=l
@@ -84,7 +123,9 @@ set guioptions-=R
 
 
 "------------Mappings-----------"
-let mapleader = ','     "The default leader is \, but a comma is easier.
+
+"The default leader is \, but a comma is easier.
+let mapleader = ','
 
 "Make it easy to edit the Vimrc file.
 nmap <Leader>ev :tabedit $MYVIMRC<cr>
@@ -95,6 +136,8 @@ nmap <Leader><space> :nohlsearch<cr>
 "Map escape key
 :inoremap jf <esc>
 
+"Make NERDTree easier to toggle
+nmap <D-&> :NERDTreeToggle<cr>
 
 
 
@@ -106,3 +149,13 @@ augroup autosourcing
         autocmd!
         autocmd BufWritePost .vimrc source %
 augroup END
+
+
+
+
+
+"------------CtrlP settings-----------"
+
+"I had to 'brew install ctags' to make this work (CtrlPBufTag command).
+
+
