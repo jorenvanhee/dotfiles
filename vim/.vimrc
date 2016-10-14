@@ -142,8 +142,8 @@ let mapleader = ','
 "Make it easy to edit the Vimrc file.
 nmap <Leader>ev :tabedit $MYVIMRC<cr>
 
-"Add simple highlight removal.
-nmap <Leader><space> :nohlsearch<cr>
+"Add simple highlight removal and center the line.
+nmap <Leader><space> :nohlsearch<cr>zz
 
 "Map escape key
 :inoremap jf <esc>
