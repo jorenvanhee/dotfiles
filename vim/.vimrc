@@ -168,6 +168,8 @@ augroup END
 "Change the default mapping
 let g:ctrlp_map = '<D-t>'
 
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
 
 
 
