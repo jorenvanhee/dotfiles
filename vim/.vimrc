@@ -143,6 +143,9 @@ nmap <Leader><space> :nohlsearch<cr>
 "Make NERDTree easier to toggle
 nmap <D-&> :NERDTreeToggle<cr>
 
+"CtrlPBufTag mapping
+nmap <D-r> :CtrlPBufTag<cr>
+
 
 
 
