@@ -101,6 +101,9 @@ set guioptions-=e
 "set t_Co=256
 set guifont=Fira_Code:h14
 
+"Use ligatures
+set macligatures
+
 "Macvim-specific line-height
 set linespace=10
 
