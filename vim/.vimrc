@@ -162,6 +162,9 @@ augroup END
 
 "I had to 'brew install ctags' to make this work (CtrlPBufTag command).
 
+"Change the default mapping
+let g:ctrlp_map = '<D-t>'
+
 
 
 
