@@ -169,6 +169,7 @@ augroup END
 let g:ctrlp_map = '<D-t>'
 
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_match_window = 'top,order:ttb'
 
 
 
