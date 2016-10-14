@@ -38,10 +38,18 @@ call plug#end()
 
 
 "------------Spaces and tabs-----------"
-"set expandtab       "Turn tabs into spaces
-"set tabstop=4       "Number of spaces a tab counts for
-"set softtabstop=4   "Number of spaces added/removed with tab/backspace
-"set shiftwidth=4    "Number of spaces added with reindent operations (<< & >>)
+
+"Turn tabs into spaces
+set expandtab
+
+"Number of spaces a tab counts for
+set tabstop=4
+
+"Number of spaces added/removed with tab/backspace
+set softtabstop=4
+
+"Number of spaces added with reindent operations (<< & >>)
+set shiftwidth=4
 
 
 
