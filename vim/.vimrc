@@ -29,6 +29,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-vinegar'
 
 call plug#end()
 
@@ -159,3 +160,10 @@ augroup END
 "I had to 'brew install ctags' to make this work (CtrlPBufTag command).
 
 
+
+
+
+"------------NERDTree settings-----------"
+
+"Need this to make the vinegar plugin work
+let NERDTreeHijackNetrw = 0
