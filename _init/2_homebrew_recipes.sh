@@ -9,6 +9,7 @@ brew install stow
 brew install vim
 brew install git
 brew install homebrew/binary/ngrok2
+brew install ctags
 
 brew install fish
 read -r -p "Do you want to make fish your default shell? (y/n) " response

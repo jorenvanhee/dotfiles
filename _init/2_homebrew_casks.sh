@@ -14,3 +14,4 @@ brew cask install vlc
 brew cask install iterm2
 brew cask install mamp
 brew cask install adobe-creative-cloud
+brew cask install macvim
