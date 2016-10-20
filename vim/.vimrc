@@ -30,6 +30,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-vinegar'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 
@@ -161,6 +162,7 @@ nmap <D-r> :CtrlPBufTag<cr>
 
 
 
+
 "------------Auto-Commands-----------"
 
 "Automatically source the Vimrc file on save
@@ -191,3 +193,15 @@ let g:ctrlp_match_window = 'top,order:ttb'
 
 "Need this to make the vinegar plugin work
 let NERDTreeHijackNetrw = 0
+
+
+
+
+
+"------------Emmet settings-----------"
+
+"Emmet leader key
+let g:user_emmet_leader_key='<C-Y>'
+
+"Emmet expand
+imap <D-e> <C-Y>,
