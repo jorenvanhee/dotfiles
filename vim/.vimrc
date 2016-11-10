@@ -31,6 +31,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'mattn/emmet-vim'
+Plug 'jwalton512/vim-blade'
 
 call plug#end()
 
