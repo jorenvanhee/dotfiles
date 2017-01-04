@@ -53,6 +53,11 @@ set softtabstop=4
 "Number of spaces added with reindent operations (<< & >>)
 set shiftwidth=4
 
+"Causes wrapped lines to be indented to line up with the start of the line
+if v:version >= 704
+    set breakindent
+endif
+
 
 
 
