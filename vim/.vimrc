@@ -32,6 +32,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'mattn/emmet-vim'
 Plug 'jwalton512/vim-blade'
+Plug 'terryma/vim-multiple-cursors'
 
 call plug#end()
 
