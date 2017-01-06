@@ -214,3 +214,12 @@ let g:user_emmet_leader_key='<C-Y>'
 
 "Emmet expand
 imap <D-e> <C-Y>,
+
+
+
+
+
+"------------Vim Multiple Cursors Settings-----------"
+
+"If set to 0, then pressing g:multi_cursor_quit_key in Insert mode will not quit and delete all existing cursors.
+let g:multi_cursor_exit_from_insert_mode=0
