@@ -2,5 +2,10 @@
     added = green
     changed = yellow
     untracked = red
+
 [core]
     excludesfile = ~/.gitignore_dotfiles
+
+# Use seperate file for username, GitHub token, etc.
+[include]
+    path = ~/.gitconfig.local
