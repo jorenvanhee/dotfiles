@@ -33,6 +33,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'mattn/emmet-vim'
 Plug 'jwalton512/vim-blade'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
@@ -223,3 +224,12 @@ imap <D-e> <C-Y>,
 
 "If set to 0, then pressing g:multi_cursor_quit_key in Insert mode will not quit and delete all existing cursors.
 let g:multi_cursor_exit_from_insert_mode=0
+
+
+
+
+
+"------------Vim Commentary settings-----------"
+
+"Twig
+autocmd FileType html.twig setlocal commentstring={#\ %s\ #}
