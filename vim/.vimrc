@@ -33,6 +33,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'mattn/emmet-vim'
 Plug 'jwalton512/vim-blade'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'lumiliet/vim-twig'
 Plug 'tpope/vim-commentary'
 
 call plug#end()
