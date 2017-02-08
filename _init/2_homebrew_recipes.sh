@@ -23,6 +23,9 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
     chsh -s /usr/local/bin/fish
 fi
 
+brew tap rsanchez/homebrew-craft-cli
+brew install craft-cli
+
 # For all installed or specific formulae, remove  any  older  versions from the
 # cellar. In addition, old downloads from the Homebrew download-cache are
 # deleted.
