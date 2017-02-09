@@ -35,6 +35,8 @@ Plug 'jwalton512/vim-blade'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'lumiliet/vim-twig'
 Plug 'tpope/vim-commentary'
+Plug 'sirver/UltiSnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -242,3 +244,12 @@ let g:multi_cursor_exit_from_insert_mode=0
 
 "Twig
 autocmd FileType html.twig setlocal commentstring={#\ %s\ #}
+
+
+
+
+
+"------------UltiSnips settings-----------"
+let g:UltiSnipsExpandTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
