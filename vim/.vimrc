@@ -170,6 +170,14 @@ nmap <D-&> :NERDTreeToggle<cr>
 "CtrlPBufTag mapping
 nmap <D-r> :CtrlPBufTag<cr>
 
+"If file is saved in insert mode, go back into normal mode
+:inoremap <D-s> <esc>:w<cr>
+"Since <D-s> is disabled in .gvimrc, make it work again here.
+:nmap <D-s> :w<cr>
+"If saved in visual mode, go to normal mode, save, and reselect the last
+"selected visual area.
+:vmap <D-s> <esc>:w<cr>gv
+
 
 
 
