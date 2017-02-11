@@ -16,3 +16,4 @@ brew cask install macvim
 # brew cask install 1password
 brew cask install slack
 brew cask install sublime-text
+brew cask install caffeine
