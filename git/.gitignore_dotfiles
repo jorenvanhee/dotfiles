@@ -1,3 +1,5 @@
 # This file is not called .gitignore because then it would be ignored by gnu stow
 *.swp
 .DS_Store
+# Ctags file
+tags
