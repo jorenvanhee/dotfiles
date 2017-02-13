@@ -251,5 +251,5 @@ autocmd FileType html.twig setlocal commentstring={#\ %s\ #}
 
 "------------UltiSnips settings-----------"
 let g:UltiSnipsExpandTrigger="<c-z>"
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<c-p>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
