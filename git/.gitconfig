@@ -5,6 +5,7 @@
 
 [core]
     excludesfile = ~/.gitignore_dotfiles
+    editor = /usr/local/bin/vim
 
 # Use seperate file for username, GitHub token, etc.
 [include]
