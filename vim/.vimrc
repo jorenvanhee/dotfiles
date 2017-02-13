@@ -37,6 +37,7 @@ Plug 'lumiliet/vim-twig'
 Plug 'tpope/vim-commentary'
 Plug 'sirver/UltiSnips'
 Plug 'honza/vim-snippets'
+Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
 
