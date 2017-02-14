@@ -38,6 +38,7 @@ Plug 'tpope/vim-commentary'
 Plug 'sirver/UltiSnips'
 Plug 'honza/vim-snippets'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'arnaud-lb/vim-php-namespace'
 
 call plug#end()
 
@@ -180,6 +181,22 @@ nmap <D-r> :CtrlPBufTag<cr>
 "If saved in visual mode, go to normal mode, save, and reselect the last
 "selected visual area.
 :vmap <D-s> <esc>:w<cr>gv
+
+"vim-php-namespace insert use
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>nu <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>nu :call PhpInsertUse()<CR>
+
+"vim-php-namespace expand class
+function! IPhpExpandClass()
+    call PhpExpandClass()
+    call feedkeys('a', 'n')
+endfunction
+autocmd FileType php inoremap <Leader>ne <Esc>:call IPhpExpandClass()<CR>
+autocmd FileType php noremap <Leader>ne :call PhpExpandClass()<CR>
 
 
 
