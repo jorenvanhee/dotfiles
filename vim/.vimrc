@@ -39,6 +39,7 @@ Plug 'sirver/UltiSnips'
 Plug 'honza/vim-snippets'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'arnaud-lb/vim-php-namespace'
+Plug 'joonty/vdebug'
 
 call plug#end()
 
