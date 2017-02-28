@@ -17,3 +17,4 @@ brew cask install macvim
 brew cask install slack
 brew cask install sublime-text
 brew cask install caffeine
+brew cask install postman
