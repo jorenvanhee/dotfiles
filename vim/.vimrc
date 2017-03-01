@@ -40,6 +40,7 @@ Plug 'honza/vim-snippets'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'arnaud-lb/vim-php-namespace'
 Plug 'joonty/vdebug'
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 
@@ -198,6 +199,9 @@ function! IPhpExpandClass()
 endfunction
 autocmd FileType php inoremap <Leader>ne <Esc>:call IPhpExpandClass()<CR>
 autocmd FileType php noremap <Leader>ne :call PhpExpandClass()<CR>
+
+"tagbar
+nmap <D-)> :TagbarToggle<cr>
 
 
 
