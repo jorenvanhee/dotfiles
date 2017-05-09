@@ -3,3 +3,5 @@
 .DS_Store
 # Ctags file
 tags
+tags.lock
+tags.temp
