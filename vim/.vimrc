@@ -19,6 +19,9 @@ set backspace=indent,eol,start
 "some issues with the CtrlP plugin (CtrlPBufTag command).
 set shell=/bin/bash
 
+"A don't give the 'ATTENTION' message when an existing swap file is found.
+set shortmess+=A
+
 
 
 
