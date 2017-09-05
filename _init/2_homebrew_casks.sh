@@ -19,3 +19,4 @@ brew cask install sublime-text
 brew cask install caffeine
 brew cask install postman
 brew cask install imageoptim
+brew cask install appcleaner
