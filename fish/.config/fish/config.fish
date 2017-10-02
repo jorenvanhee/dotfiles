@@ -18,6 +18,8 @@ alias gaa 'git add .'
 alias gs 'git status'
 abbr gd='git diff'
 abbr gc='git checkout'
+abbr gb='git branch'
+alias gba='git branch --all'
 abbr gr='git reset'
 
 alias l 'ls -l'
