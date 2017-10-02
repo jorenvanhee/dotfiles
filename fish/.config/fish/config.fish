@@ -10,10 +10,15 @@ source ~/.config/fish/path.fish
 # aliases
 # =======
 
-alias g 'git'
-alias gm 'git commit -m'
-alias ga 'git add .'
+abbr g='git'
+alias gm='git commit -m'
+abbr ga='git add'
+abbr gap='git add -p'
+alias gaa 'git add .'
 alias gs 'git status'
+abbr gd='git diff'
+abbr gc='git checkout'
+abbr gr='git reset'
 alias l 'ls -l'
 alias la 'ls -al'
 alias a 'php artisan'
