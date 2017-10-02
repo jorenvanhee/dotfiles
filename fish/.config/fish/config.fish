@@ -19,14 +19,17 @@ alias gs 'git status'
 abbr gd='git diff'
 abbr gc='git checkout'
 abbr gr='git reset'
+
 alias l 'ls -l'
 alias la 'ls -al'
-alias a 'php artisan'
-alias phpspec './vendor/phpspec/phpspec/bin/phpspec'
-alias phpunit './vendor/bin/phpunit'
 
 # List all directories (also the ones starting with a dot).
 alias lsd 'ls -ld .*/ */'
+
+alias a 'php artisan'
+
+alias phpspec './vendor/phpspec/phpspec/bin/phpspec'
+alias phpunit './vendor/bin/phpunit'
 
 alias ip 'dig +short myip.opendns.com @resolver1.opendns.com'
 
