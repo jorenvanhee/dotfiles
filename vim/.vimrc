@@ -45,6 +45,7 @@ Plug 'arnaud-lb/vim-php-namespace'
 Plug 'joonty/vdebug'
 Plug 'majutsushi/tagbar'
 Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
