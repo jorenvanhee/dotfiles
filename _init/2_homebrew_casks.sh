@@ -20,3 +20,4 @@ brew cask install caffeine
 brew cask install postman
 brew cask install imageoptim
 brew cask install appcleaner
+brew cask install alfred
