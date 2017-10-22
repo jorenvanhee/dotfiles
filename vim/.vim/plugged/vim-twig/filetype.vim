@@ -1,6 +1,10 @@
 if exists("did_load_filetypes")
   finish
 endif
+
+let g:vim_twig_filetype_detected = 1
+
+
 augroup filetypedetect
   au BufRead,BufNewFile *.twig call s:Setf(expand('<amatch>'))
 augroup END

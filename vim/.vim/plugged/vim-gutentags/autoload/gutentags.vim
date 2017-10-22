@@ -2,6 +2,15 @@
 
 " Utilities {{{
 
+function! gutentags#chdir(path)
+  if has('nvim')
+    let chdir = haslocaldir() ? 'lcd' : haslocaldir(-1, 0) ? 'tcd' : 'cd'
+  else
+    let chdir = haslocaldir() ? 'lcd' : 'cd'
+  endif
+  execute chdir a:path
+endfunction
+
 " Throw an exception message.
 function! gutentags#throw(message)
     throw "gutentags: " . a:message
@@ -56,6 +65,18 @@ function! gutentags#get_res_file(filename) abort
     return g:gutentags_res_dir . a:filename
 endfunction
 
+" Returns whether a path is rooted.
+if has('win32') || has('win64')
+function! gutentags#is_path_rooted(path) abort
+  return len(a:path) >= 2 && (
+        \a:path[0] == '/' || a:path[0] == '\' || a:path[1] == ':')
+endfunction
+else
+function! gutentags#is_path_rooted(path) abort
+  return !empty(a:path) && a:path[0] == '/'
+endfunction
+endif
+
 " }}}
 
 " Gutentags Setup {{{
@@ -97,11 +118,12 @@ function! gutentags#get_project_file_list_cmd(path) abort
         let l:markers = get(g:gutentags_file_list_command, 'markers', [])
         if type(l:markers) == type({})
             for [marker, file_list_cmd] in items(l:markers)
-                if getftype(a:path . '/' . marker) != ""
+                if !empty(globpath(a:path, marker, 1))
                     return gutentags#validate_cmd(file_list_cmd)
                 endif
             endfor
         endif
+        return get(g:gutentags_file_list_command, 'default', "")
     endif
     return ""
 endfunction
@@ -125,7 +147,7 @@ function! gutentags#get_project_root(path) abort
     endif
     while l:path != l:previous_path
         for root in l:markers
-            if getftype(l:path . '/' . root) != ""
+            if !empty(globpath(l:path, root, 1))
                 let l:proj_dir = simplify(fnamemodify(l:path, ':p'))
                 let l:proj_dir = gutentags#stripslash(l:proj_dir)
                 if l:proj_dir == ''
@@ -161,6 +183,9 @@ endfunction
 
 " Generate a path for a given filename in the cache directory.
 function! gutentags#get_cachefile(root_dir, filename) abort
+    if gutentags#is_path_rooted(a:filename)
+        return a:filename
+    endif
     let l:tag_path = gutentags#stripslash(a:root_dir) . '/' . a:filename
     if g:gutentags_cache_dir != ""
         " Put the tag file in the cache dir instead of inside the
@@ -183,7 +208,10 @@ function! gutentags#setup_gutentags() abort
     " Don't setup gutentags for anything that's not a normal buffer
     " (so don't do anything for help buffers and quickfix windows and
     "  other such things)
-    if &buftype != ''
+    " Also don't do anything for the default `[No Name]` buffer you get
+    " after starting Vim.
+    if &buftype != '' || 
+          \(bufname('%') == '' && !g:gutentags_generate_on_empty_buffer)
         return
     endif
 
@@ -283,7 +311,8 @@ endfor
 
 " Make a given file known as being currently generated or updated.
 function! gutentags#add_progress(module, file) abort
-    let s:maybe_in_progress[a:module][a:file] = localtime()
+    let l:abs_file = fnamemodify(a:file, ':p')
+    let s:maybe_in_progress[a:module][l:abs_file] = localtime()
 endfunction
 
 " Get how to execute an external command depending on debug settings.
@@ -368,7 +397,7 @@ function! s:update_tags(bufno, module, write_mode, queue_mode) abort
     " it possible to get the relative path of the filename to parse if we're
     " doing an incremental update.
     let l:prev_cwd = getcwd()
-    execute "chdir " . fnameescape(l:proj_dir)
+    call gutentags#chdir(fnameescape(l:proj_dir))
     try
         call call("gutentags#".a:module."#generate",
                     \[l:proj_dir, l:tags_file, a:write_mode])
@@ -377,7 +406,7 @@ function! s:update_tags(bufno, module, write_mode, queue_mode) abort
         echom v:exception
     finally
         " Restore the current directory...
-        execute "chdir " . fnameescape(l:prev_cwd)
+        call gutentags#chdir(fnameescape(l:prev_cwd))
     endtry
 endfunction
 
@@ -435,8 +464,10 @@ endfunction
 
 function! gutentags#inprogress()
     echom "gutentags: generations in progress:"
-    for mip in keys(s:maybe_in_progress)
-        echom mip
+    for mod_name in keys(s:maybe_in_progress)
+        for mib in keys(s:maybe_in_progress[mod_name])
+            echom mod_name.":  ".mib
+        endfor
     endfor
     echom ""
 endfunction
@@ -477,7 +508,7 @@ function! gutentags#statusline(...) abort
         let l:progress_queue = s:maybe_in_progress[module]
         let l:timestamp = get(l:progress_queue, l:abs_tag_file)
         if l:timestamp == 0
-            return ''
+            continue
         endif
         " It's maybe generating! Check if the lock file is still there... but
         " don't do it too soon after the script was originally launched, because
@@ -486,19 +517,21 @@ function! gutentags#statusline(...) abort
         if (localtime() - l:timestamp) > 1 &&
                     \!filereadable(l:abs_tag_file . '.lock')
             call remove(l:progress_queue, l:abs_tag_file)
-            return ''
+            continue
         endif
         call add(l:modules_in_progress, module)
     endfor
+
+    if len(l:modules_in_progress) == 0
+        return ''
+    endif
 
     " It's still there! So probably `ctags` is still running...
     " (although there's a chance it crashed, or the script had a problem, and
     " the lock file has been left behind... we could try and run some
     " additional checks here to see if it's legitimately running, and
     " otherwise delete the lock file... maybe in the future...)
-    if len(g:gutentags_modules) > 1
-        let l:gen_msg .= '['.join(l:modules_in_progress, ',').']'
-    endif
+    let l:gen_msg .= '['.join(l:modules_in_progress, ',').']'
     return l:gen_msg
 endfunction
 
