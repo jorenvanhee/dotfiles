@@ -25,6 +25,7 @@ abbr gr='git reset'
 alias gsl='git stash list'
 abbr gsa='git stash apply'
 abbr gsd='git stash drop'
+alias gp='git pull'
 
 alias l 'ls -l'
 alias la 'ls -al'
