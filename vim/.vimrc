@@ -17,6 +17,9 @@ set backspace=indent,eol,start
 
 "Set the shell to bash, because I'm using fish shell and that was causing
 "some issues with the CtrlP plugin (CtrlPBufTag command).
+"Not using CtrlP anymore, but this will prevent possible issues with
+"other plugins.
+"eg: https://github.com/junegunn/fzf.vim/issues/304
 set shell=/bin/bash
 
 "A don't give the 'ATTENTION' message when an existing swap file is found.
@@ -31,7 +34,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'mattn/emmet-vim'
 Plug 'jwalton512/vim-blade'
@@ -47,6 +49,8 @@ Plug 'majutsushi/tagbar'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -179,9 +183,6 @@ nmap N Nzz
 "Make NERDTree easier to toggle
 nmap <D-&> :NERDTreeToggle<cr>
 
-"CtrlPBufTag mapping
-nmap <D-r> :CtrlPBufTag<cr>
-
 "If file is saved in insert mode, go back into normal mode
 :inoremap <D-s> <esc>:w<cr>
 "Since <D-s> is disabled in .gvimrc, make it work again here.
@@ -220,28 +221,6 @@ augroup autosourcing
         autocmd!
         autocmd BufWritePost .vimrc source %
 augroup END
-
-
-
-
-
-"------------CtrlP settings-----------"
-
-"I had to 'brew install ctags' to make this work (CtrlPBufTag command).
-
-"Change the default mapping
-let g:ctrlp_map = '<D-t>'
-
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-let g:ctrlp_match_window = 'top,order:ttb'
-
-if executable('ag')
-    "Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-    "ag is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
-endif
 
 
 
@@ -290,3 +269,15 @@ autocmd FileType html.twig setlocal commentstring={#\ %s\ #}
 let g:UltiSnipsExpandTrigger="<c-z>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+
+
+
+
+"------------fzf zettings-----------"
+
+let g:fzf_layout = { 'up': '~40%' }
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+nmap <D-t> :Files<cr>
+nmap <D-r> :BTags<cr>
