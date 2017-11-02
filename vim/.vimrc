@@ -231,6 +231,8 @@ augroup END
 "Need this to make the vinegar plugin work
 let NERDTreeHijackNetrw = 0
 
+let NERDTreeShowHidden=1
+
 
 
 
