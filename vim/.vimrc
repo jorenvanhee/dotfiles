@@ -232,7 +232,7 @@ augroup END
 let NERDTreeHijackNetrw = 0
 
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.swp$']
+let NERDTreeIgnore=['\.swp$', '\~$', '\.git$', '.DS_Store$', 'tags$']
 
 
 
