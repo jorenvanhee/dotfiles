@@ -29,7 +29,7 @@ abbr gsd='git stash drop'
 alias gp='git pull'
 
 alias l 'ls -l'
-alias la 'ls -al'
+alias la 'ls -alh'
 
 # List all directories (also the ones starting with a dot).
 alias lsd 'ls -ld .*/ */'
