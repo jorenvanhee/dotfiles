@@ -77,6 +77,8 @@ if v:version >= 704
     set breakindent
 endif
 
+"Javascript
+autocmd Filetype javascript,json setlocal ts=2 sw=2 sts=2 expandtab
 
 
 
