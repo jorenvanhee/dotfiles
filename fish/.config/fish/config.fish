@@ -41,6 +41,8 @@ alias phpunit './vendor/bin/phpunit'
 
 alias ip 'dig +short myip.opendns.com @resolver1.opendns.com'
 
+alias v mvim
+
 
 # plugins
 # =======
