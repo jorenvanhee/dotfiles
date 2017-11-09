@@ -152,7 +152,7 @@ let g:solarized_termcolors=256
 colorscheme solarized
 
 "Light or dark
-set background=light
+set background=dark
 
 "Disable Gui scrollbars.
 set guioptions-=l
