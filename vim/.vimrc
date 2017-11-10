@@ -51,6 +51,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'justinmk/vim-sneak'
 
 call plug#end()
 
@@ -286,3 +287,10 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 nmap <D-t> :Files<cr>
 nmap <D-r> :BTags<cr>
+
+
+
+
+
+"------------sneak zettings-----------"
+let g:sneak#label = 1
