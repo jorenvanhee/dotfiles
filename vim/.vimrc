@@ -52,6 +52,7 @@ Plug 'tpope/vim-repeat'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
+Plug 'Valloric/YouCompleteMe'
 
 call plug#end()
 
@@ -294,3 +295,4 @@ nmap <D-r> :BTags<cr>
 
 "------------sneak zettings-----------"
 let g:sneak#label = 1
+
