@@ -82,6 +82,9 @@ endif
 "Javascript
 autocmd Filetype javascript,json setlocal ts=2 sw=2 sts=2 expandtab
 
+"Yaml
+autocmd Filetype yaml setlocal ts=2 sw=2 sts=2 expandtab
+
 
 
 
