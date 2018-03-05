@@ -299,3 +299,7 @@ nmap <D-r> :BTags<cr>
 "------------sneak zettings-----------"
 let g:sneak#label = 1
 
+
+
+
+
