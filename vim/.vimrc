@@ -53,6 +53,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'ternjs/tern_for_vim'
+Plug 'posva/vim-vue'
 
 call plug#end()
 
@@ -80,7 +81,7 @@ if v:version >= 704
 endif
 
 "Javascript
-autocmd Filetype javascript,json setlocal ts=2 sw=2 sts=2 expandtab
+autocmd Filetype javascript,json,vue setlocal ts=2 sw=2 sts=2 expandtab
 
 "Yaml
 autocmd Filetype yaml setlocal ts=2 sw=2 sts=2 expandtab
