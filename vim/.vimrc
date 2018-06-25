@@ -54,6 +54,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'ternjs/tern_for_vim'
 Plug 'posva/vim-vue'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -285,7 +286,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 
 
-"------------fzf zettings-----------"
+"------------fzf settings-----------"
 
 let g:fzf_layout = { 'up': '~40%' }
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
@@ -297,10 +298,14 @@ nmap <D-r> :BTags<cr>
 
 
 
-"------------sneak zettings-----------"
+"------------sneak settings-----------"
 let g:sneak#label = 1
 
 
 
 
 
+"------------ale settings-----------"
+let g:ale_fixers = {
+  \ 'javascript': ['eslint'],
+  \ }
