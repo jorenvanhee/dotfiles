@@ -309,3 +309,13 @@ let g:sneak#label = 1
 let g:ale_fixers = {
   \ 'javascript': ['eslint'],
   \ }
+
+
+
+
+
+"------------gutentags settings-----------"
+let g:gutentags_ctags_extra_args = [
+  \ '--languages=PHP',
+  \ '--kinds-PHP=c,d,f,i,t',
+  \ ]

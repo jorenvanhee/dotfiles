@@ -8,7 +8,7 @@ brew install z
 brew install stow
 brew install vim
 brew install git
-brew install ctags
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 brew install node
 brew install yarn
 brew install tree
