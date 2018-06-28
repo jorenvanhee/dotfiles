@@ -25,6 +25,8 @@ set shell=/bin/bash
 "A don't give the 'ATTENTION' message when an existing swap file is found.
 set shortmess+=A
 
+"Don't scan included files (too slow)
+set complete-=i
 
 
 
