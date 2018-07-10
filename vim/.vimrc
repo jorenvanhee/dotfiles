@@ -25,8 +25,6 @@ set shell=/bin/bash
 "A don't give the 'ATTENTION' message when an existing swap file is found.
 set shortmess+=A
 
-"Don't scan included files (too slow)
-set complete-=i
 
 
 
@@ -56,6 +54,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'ternjs/tern_for_vim'
 Plug 'posva/vim-vue'
+Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
 
 call plug#end()
 
@@ -231,6 +230,18 @@ augroup autosourcing
         autocmd!
         autocmd BufWritePost .vimrc source %
 augroup END
+
+
+
+
+
+"------------Completion-----------"
+
+"Don't scan included files (too slow)
+set complete-=i
+
+"Phpactor completion
+autocmd FileType php setlocal omnifunc=phpactor#Complete
 
 
 
