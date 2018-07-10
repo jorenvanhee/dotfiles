@@ -15,6 +15,7 @@ brew install tree
 brew install the_silver_searcher
 brew install cmake
 brew install python3
+brew install neovim
 
 brew install fish
 read -r -p "Do you want to make fish your default shell? (y/n) " response
