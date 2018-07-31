@@ -1,0 +1,1 @@
+/Users/joren/.config/fisherman/menu/menu.fish
