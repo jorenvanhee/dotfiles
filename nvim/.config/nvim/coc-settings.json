@@ -1,0 +1,4 @@
+{
+    /* Too much errors while using tailwindcss. */
+    "css.validate": false,
+}
