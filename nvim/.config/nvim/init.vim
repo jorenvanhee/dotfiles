@@ -24,6 +24,14 @@ Plug 'lumiliet/vim-twig'
 
 call plug#end()
 
+let g:coc_global_extensions = [
+    \ 'coc-tsserver',
+    \ 'coc-json',
+    \ 'coc-html',
+    \ 'coc-css',
+    \ 'coc-tailwindcss',
+\ ]
+
 colorscheme flattened_light
 
 " The default leader is \, but a comma is easier
