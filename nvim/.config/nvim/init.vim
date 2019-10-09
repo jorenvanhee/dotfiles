@@ -94,6 +94,11 @@ augroup autosourcing
         autocmd BufWritePost $MYVIMRC source %
 augroup END
 
+augroup autosourcing
+    autocmd!
+    autocmd FileType javascript nmap <buffer> <silent> <C-]> <Plug>(coc-definition)
+augroup END
+
 " Highlight current line
 set cursorline
 
