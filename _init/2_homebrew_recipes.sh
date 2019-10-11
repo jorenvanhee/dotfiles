@@ -17,5 +17,6 @@ brew install Schniz/tap/fnm
 brew install the_silver_searcher
 brew install fzf
 brew install starship
+brew install tldr
 
 brew cleanup
