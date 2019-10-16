@@ -16,3 +16,6 @@ fnm env --multi | source
 abbr -a gm          git commit -m
 abbr -a gme         git merge
 abbr -a gs          git status -s
+abbr -a gdc         git diff --cached
+abbr -a gc          git checkout
+abbr -a gap         git add --patch
