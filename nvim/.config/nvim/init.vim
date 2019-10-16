@@ -30,6 +30,7 @@ let g:coc_global_extensions = [
     \ 'coc-html',
     \ 'coc-css',
     \ 'coc-tailwindcss',
+    \ 'coc-phpls',
 \ ]
 
 colorscheme flattened_light
@@ -96,7 +97,7 @@ augroup END
 
 augroup autosourcing
     autocmd!
-    autocmd FileType javascript nmap <buffer> <silent> <C-]> <Plug>(coc-definition)
+    autocmd FileType javascript,php nmap <buffer> <silent> <C-]> <Plug>(coc-definition)
 augroup END
 
 " Highlight current line
