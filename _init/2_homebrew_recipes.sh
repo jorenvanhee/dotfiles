@@ -17,5 +17,6 @@ brew install Schniz/tap/fnm
 brew install the_silver_searcher
 brew install fzf
 brew install tldr
+brew install python
 
 brew cleanup
