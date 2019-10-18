@@ -95,7 +95,7 @@ augroup autosourcing
         autocmd BufWritePost $MYVIMRC source %
 augroup END
 
-augroup autosourcing
+augroup coc
     autocmd!
     autocmd FileType javascript,php nmap <buffer> <silent> <C-]> <Plug>(coc-definition)
 augroup END
