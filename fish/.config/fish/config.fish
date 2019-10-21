@@ -12,6 +12,8 @@ fnm env --multi | source
 
 # aliases
 
+abbr -a cat bat
+
 # overwrite some jhillyerd/plugin-git aliases
 abbr -a gm          git commit -m
 abbr -a gme         git merge
