@@ -21,6 +21,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
 Plug 'lumiliet/vim-twig'
+Plug 'junegunn/vim-easy-align'
 
 call plug#end()
 
@@ -77,6 +78,12 @@ nmap <C-L> <C-W><C-L>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
