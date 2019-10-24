@@ -45,6 +45,12 @@ let mapleader = ','
 " Remove search highlight
 nmap <Leader><space> :nohlsearch<cr>
 
+" Remap caret since it does something weird on an azerty keyboard. For
+" instance, try going into insert mode after going to the beginning of the
+" line with ^.
+nmap <space> ^<esc>
+xmap <space> ^
+
 " Center the screen when going to the next/previous search result
 nmap n nzz
 nmap N Nzz
