@@ -32,6 +32,7 @@ let g:coc_global_extensions = [
     \ 'coc-css',
     \ 'coc-tailwindcss',
     \ 'coc-phpls',
+    \ 'coc-eslint',
 \ ]
 
 colorscheme flattened_light
