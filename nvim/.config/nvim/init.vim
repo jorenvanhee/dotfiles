@@ -70,7 +70,8 @@ nmap <Leader>( 5gt
 " https://github.com/junegunn/fzf.vim/issues/129
 nmap <D-t> :GFiles --exclude-standard --cached --others<cr>
 nmap <D-S-t> :Files<cr>
-nmap <D-r> :BTags<cr>
+
+nmap <D-r> :CocList outline<cr>
 
 " Better pane navigation
 nmap <C-J> <C-W><C-J>
