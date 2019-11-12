@@ -21,6 +21,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
 Plug 'lumiliet/vim-twig'
+Plug 'pangloss/vim-javascript'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-abolish'
 
