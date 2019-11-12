@@ -24,6 +24,7 @@ Plug 'lumiliet/vim-twig'
 Plug 'pangloss/vim-javascript'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-abolish'
+Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
 
@@ -74,6 +75,7 @@ nmap <D-t> :GFiles --exclude-standard --cached --others<cr>
 nmap <D-S-t> :Files<cr>
 
 nmap <D-r> :CocList outline<cr>
+nmap <D-S-r> :Tags<cr>
 
 " Better pane navigation
 nmap <C-J> <C-W><C-J>
@@ -168,3 +170,8 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " Some servers have issues with backup files, see #649 (coc.nvim)
 set nobackup
 set nowritebackup
+
+let g:gutentags_ctags_extra_args = [
+    \ '--languages=PHP',
+    \ '--php-kinds=-v',
+    \ ]
