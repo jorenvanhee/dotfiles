@@ -7,7 +7,7 @@ brew cask install iterm2
 brew cask install transmission
 brew cask install vlc
 brew cask install docker
-brew cask install sequel-pro
+brew cask install tableplus
 brew cask install harvest
 brew cask install postman
 brew cask install gitup
