@@ -25,6 +25,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-abolish'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 
@@ -61,6 +62,9 @@ nmap N Nzz
 
 " Toggle NERDTree
 nmap <D-@> :NERDTreeToggle<cr>
+
+" Toggle Tagbar
+nmap <D--> :TagbarToggle<cr>
 
 " Navigate tabs
 nmap <Leader>& 1gt
