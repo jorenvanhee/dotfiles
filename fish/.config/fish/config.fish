@@ -21,3 +21,16 @@ abbr -a gs          git status -s
 abbr -a gdc         git diff --cached
 abbr -a gc          git checkout
 abbr -a gap         git add --patch
+
+function gmm
+    set -l branch (git rev-parse --abbrev-ref HEAD)
+    set -l ticket (string match -r '\/([^-]*-[0-9]+)' $branch)[2]
+    set -l message $argv[1]
+    set -l flags $argv[2]
+
+    if test $ticket
+        git commit -m "$ticket $message" $flags
+    else
+        git commit -m "$message" $flags
+    end
+end
