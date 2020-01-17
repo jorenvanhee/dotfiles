@@ -44,6 +44,9 @@ colorscheme flattened_light
 " Make terminal colors pretty
 set termguicolors
 
+" Vim specific fzf options
+let $FZF_DEFAULT_OPTS = '--color bg+:#eee8d5,fg+:#000000,hl+:#FF0000'
+
 " The default leader is \, but a comma is easier
 let mapleader = ','
 
