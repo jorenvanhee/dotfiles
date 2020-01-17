@@ -41,6 +41,9 @@ let g:coc_global_extensions = [
 
 colorscheme flattened_light
 
+" Make terminal colors pretty
+set termguicolors
+
 " The default leader is \, but a comma is easier
 let mapleader = ','
 
