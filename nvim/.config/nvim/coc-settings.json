@@ -1,4 +1,9 @@
 {
     /* Too much errors while using tailwindcss. */
     "css.validate": false,
+    "tailwindCSS.htmlLanguages": [
+        "html",
+        "html.twig",
+        "js"
+    ]
 }
