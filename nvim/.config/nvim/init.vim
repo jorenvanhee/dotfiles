@@ -22,6 +22,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
 Plug 'lumiliet/vim-twig'
 Plug 'junegunn/vim-easy-align'
+Plug 'maxmellon/vim-jsx-pretty'
 
 call plug#end()
 
