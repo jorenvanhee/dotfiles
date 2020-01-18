@@ -1,5 +1,7 @@
 set fish_greeting ''
 
+source ~/.config/fish/path.fish
+
 # Install Fisher (https://github.com/jorgebucaran/fisher)
 if not functions -q fisher
     set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
