@@ -21,8 +21,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
 Plug 'lumiliet/vim-twig'
+Plug 'pangloss/vim-javascript'
 Plug 'junegunn/vim-easy-align'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'tpope/vim-abolish'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 
@@ -33,9 +37,16 @@ let g:coc_global_extensions = [
     \ 'coc-css',
     \ 'coc-tailwindcss',
     \ 'coc-phpls',
+    \ 'coc-eslint',
 \ ]
 
 colorscheme flattened_light
+
+" Make terminal colors pretty
+set termguicolors
+
+" Vim specific fzf options
+let $FZF_DEFAULT_OPTS = '--color bg+:#eee8d5,fg+:#000000,hl+:#FF0000'
 
 " The default leader is \, but a comma is easier
 let mapleader = ','
@@ -59,6 +70,9 @@ nmap N Nzz
 " Toggle NERDTree
 nmap <D-@> :NERDTreeToggle<cr>
 
+" Toggle Tagbar
+nmap <D--> :TagbarToggle<cr>
+
 " Navigate tabs
 nmap <Leader>& 1gt
 nmap <Leader>é 2gt
@@ -70,7 +84,9 @@ nmap <Leader>( 5gt
 " https://github.com/junegunn/fzf.vim/issues/129
 nmap <D-t> :GFiles --exclude-standard --cached --others<cr>
 nmap <D-S-t> :Files<cr>
-nmap <D-r> :BTags<cr>
+
+nmap <D-r> :CocList outline<cr>
+nmap <D-S-r> :Tags<cr>
 
 " Better pane navigation
 nmap <C-J> <C-W><C-J>
@@ -165,3 +181,8 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " Some servers have issues with backup files, see #649 (coc.nvim)
 set nobackup
 set nowritebackup
+
+let g:gutentags_ctags_extra_args = [
+    \ '--languages=PHP',
+    \ '--php-kinds=-v',
+    \ ]
