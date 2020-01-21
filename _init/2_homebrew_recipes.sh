@@ -20,5 +20,6 @@ brew install tldr
 brew install python
 brew install bat
 brew install entr
+brew install rg
 
 brew cleanup
