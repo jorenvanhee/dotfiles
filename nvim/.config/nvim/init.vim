@@ -186,3 +186,8 @@ let g:gutentags_ctags_extra_args = [
     \ '--languages=PHP',
     \ '--php-kinds=-v',
     \ ]
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   "rg --column --line-number --no-heading --color=always --smart-case --hidden ".shellescape(<q-args>), 1, <bang>0
+  \ )
