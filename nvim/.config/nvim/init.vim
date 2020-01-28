@@ -189,5 +189,5 @@ let g:gutentags_ctags_extra_args = [
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   "rg --column --line-number --no-heading --color=always --smart-case --hidden ".shellescape(<q-args>), 1, <bang>0
+  \   "rg --column --line-number --no-heading --color=always --smart-case --hidden --glob '!.git' ".shellescape(<q-args>), 1, <bang>0
   \ )
