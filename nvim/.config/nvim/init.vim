@@ -189,6 +189,17 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+" Rename symbol under cursor to a new word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for do codeAction of selected region
+" ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Get and run code action(s) for current line
+nmap <leader>A <Plug>(coc-codeaction)
+
 
 
 " 5_Automatic_commands 🕹
