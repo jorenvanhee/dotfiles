@@ -39,6 +39,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-abolish'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
+Plug 'leafgarland/typescript-vim'
+Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
