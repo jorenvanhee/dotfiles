@@ -197,6 +197,9 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
+" Apply AutoFix to problem on the current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
 " Get and run code action(s) for current line
 nmap <leader>A <Plug>(coc-codeaction)
 
