@@ -241,7 +241,6 @@ let NERDTreeIgnore = [
     \ '\~$',
     \ '\.git$',
     \ '.DS_Store$',
-    \ 'tags$',
     \ '\.idea$',
     \ ]
 
