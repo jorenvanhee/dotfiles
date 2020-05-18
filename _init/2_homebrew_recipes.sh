@@ -20,6 +20,7 @@ brew install tldr
 brew install python
 brew install bat
 brew install entr
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 brew install rg
 
 brew cleanup
