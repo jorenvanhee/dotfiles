@@ -1,0 +1,9 @@
+{
+    /* Too much errors while using tailwindcss. */
+    "css.validate": false,
+    "tailwindCSS.includeLanguages": {
+        "html.twig": "html",
+        "html": "html",
+        "jinja": "html"
+    }
+}

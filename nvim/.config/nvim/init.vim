@@ -1,86 +1,42 @@
-" Table of contents 📖
-"
-" 1_Plugins 📦
-" 2_Coc_extensions 🐓
-" 3_General_settings ⚙️
-" 4_Keyboard_mappings 🎹
-" 5_Automatic_commands 🕹
-" 6_Plugin_settings 🔧
-"   > 6a_Sneak 👞
-"   > 6b_NERDTree 🎄
-"   > 6c_Gutentags 🗂
-"   > 6d_fzf 🔎
-
-
-
-" 1_Plugins 📦
-" ===
-
-" Execute this manually to install vim-plug:
-" curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'scrooloose/nerdtree'
-Plug 'romainl/flattened'
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'justinmk/vim-sneak'
-Plug 'Raimondi/delimitMate'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'editorconfig/editorconfig-vim'
-Plug 'mattn/emmet-vim'
-Plug 'lumiliet/vim-twig'
-Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-abolish'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'majutsushi/tagbar'
-Plug 'leafgarland/typescript-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
+Plug 'romainl/flattened', { 'branch': 'master' }
+Plug 'nvim-lua/plenary.nvim', { 'branch': 'master' } " Required by telescope
+Plug 'nvim-telescope/telescope.nvim', { 'branch': 'master' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'make' }
+Plug 'ms-jpq/chadtree', { 'branch': 'chad', 'do': 'python3 -m chadtree deps' }
+Plug 'justinmk/vim-sneak', { 'branch': 'master' }
+Plug 'tpope/vim-commentary', { 'branch': 'master' }
+Plug 'tpope/vim-surround', { 'branch': 'master' }
+Plug 'tpope/vim-repeat', { 'branch': 'master' }
+Plug 'tpope/vim-abolish', { 'branch': 'master' }
+Plug 'windwp/nvim-autopairs', { 'branch': 'master' }
+Plug 'mattn/emmet-vim', { 'branch': 'master' }
+Plug 'neovim/nvim-lspconfig', { 'branch': 'master' }
+Plug 'williamboman/nvim-lsp-installer', { 'branch': 'master' }
+Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
+Plug 'onsails/lspkind-nvim', { 'branch': 'master' }
+Plug 'L3MON4D3/LuaSnip', { 'branch': 'master' }
+Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'master', 'do': ':TSUpdate' }
+Plug 'lepture/vim-jinja', { 'branch': 'master' }
+Plug 'tpope/vim-rails', { 'branch': 'master' }
 
 call plug#end()
 
+" The default leader is \ but a comma is easier
+let mapleader = ','
 
+" Map escape key
+:inoremap jf <esc>
 
-" 2_Coc_extensions 🐓
-" ===
+" Enable mouse support ->
+set mouse=a
 
-let g:coc_global_extensions = [
-    \ 'coc-tsserver',
-    \ 'coc-json',
-    \ 'coc-html',
-    \ 'coc-css',
-    \ 'coc-tailwindcss',
-    \ 'coc-phpls',
-    \ 'coc-eslint',
-\ ]
-
-
-
-" 3_General_settings 🔧
-" ===
-
-set number
-set relativenumber
-
-colorscheme flattened_light
-
-" Make colors work better in terminal
+" Make colorschemes work in terminal
 set termguicolors
-
-" Highlight current line
-set cursorline
-
-" Case insensitive pattern matching
-set ignorecase
-
-" Switch to case sensitive if you use any capital letters
-set smartcase
 
 " Always show signcolumns
 set signcolumn=yes
@@ -94,177 +50,195 @@ set splitright
 " Turn tabs into spaces
 set expandtab
 
-" Number of spaces a tab counts for
-set tabstop=4
-
-" Number of spaces added/removed with tab/backspace
-set softtabstop=4
-
 " Number of spaces added with reindent operations (<< & >>)
-set shiftwidth=4
+set shiftwidth=2
 
-" Some servers have issues with backup files, see #649 (coc.nvim)
-set nobackup
-set nowritebackup
+" Colorscheme
+colorscheme flattened_light
 
+" Set relative line numbers
+set number
+set relativenumber
 
+" Highlight current line
+set cursorline
 
-" 4_Keyboard_mappings 🎹
-" ===
+" Case insensitive pattern matching
+set ignorecase
 
-" The default leader is \ but a comma is easier
-let mapleader = ','
+" Switch to case sensitive if search pattern contains upper case characters
+set smartcase
 
-" Map escape key
-:inoremap jf <esc>
+" Edit init.vim
+nnoremap <Leader>ev :tabedit $MYVIMRC<cr>
+
+" Source init.vim
+nnoremap <Leader>sv :source $MYVIMRC<cr>
+
+" Move to beginning of line. Caret (^) doesn't do the job on azerty keyboards.
+nnoremap <space> ^<esc>
+vnoremap <space> ^
 
 " Remove search highlight
-nmap <Leader><space> :nohlsearch<cr>
-
-" Remap caret since it does something weird on an azerty keyboard. For
-" instance, try going into insert mode after going to the beginning of the
-" line with ^.
-nmap <space> ^<esc>
-xmap <space> ^
+nnoremap <Leader><Space> :nohlsearch<CR>
 
 " Center the screen when going to the next/previous search result
 nmap n nzz
 nmap N Nzz
 
-" Toggle NERDTree
-nmap <D-@> :NERDTreeToggle<cr>
+" Faster tab navigation, leader key followed by the characters under the
+" numbers on an azerty keyboard.
+nnoremap <Leader>& 1gt
+nnoremap <Leader>é 2gt
+nnoremap <Leader>" 3gt
+nnoremap <Leader>' 4gt
+nnoremap <Leader>( 5gt
+nnoremap <Leader>§ 6gt
+nnoremap <Leader>è 7gt
+nnoremap <Leader>! 8gt
+nnoremap <Leader>ç 9gt
 
-" Save file and go back to normal mode
-:nmap <D-s> :w<cr>
-:inoremap <D-s> <esc>:w<cr>
-:vmap <D-s> <esc>:w<cr>
-
-" Navigate tabs
-nmap <Leader>& 1gt
-nmap <Leader>é 2gt
-nmap <Leader>" 3gt
-nmap <Leader>' 4gt
-nmap <Leader>( 5gt
-
-" Make it easy to edit the Vimrc file.
-nmap <Leader>ev :tabedit $MYVIMRC<cr>
-
-" Better pane navigation
+" Faster pane navigation
 nmap <C-J> <C-W><C-J>
 nmap <C-K> <C-W><C-K>
 nmap <C-H> <C-W><C-H>
 nmap <C-L> <C-W><C-L>
 
-" Toggle Tagbar
-nmap <D--> :TagbarToggle<cr>
+" Save file
+nnoremap <F1> :w<CR>
+inoremap <F1> <Esc>:w<CR>
+vnoremap <F1> <Esc>:w<CR>
 
-" Emmet expand
-imap <D-e> <C-Y>,
+" Copy selection to clipboard
+vnoremap <F2> "+y
 
-" fzf
-" https://github.com/junegunn/fzf.vim/issues/129
-nmap <D-t> :GFiles --exclude-standard --cached --others<cr>
-nmap <D-S-t> :Files<cr>
+" Toggle CHADTree
+nnoremap <F3> :CHADopen<CR>
 
-nmap <D-r> :CocList outline<cr>
-nmap <D-S-r> :Tags<cr>
+" Telescope
+nnoremap <F4> :Telescope find_files<CR>
 
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Emmet
+imap <F5> <C-Y>,
 
-" Use K to show documentation in preview window
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" http://aperiodic.net/phil/archives/Geekery/term-function-keys.html
+" nnoremap <F1> :echo 'f1'<CR> "Send ^[ [11~
+" nnoremap <F2> :echo 'f2'<CR> "Send ^[ [12~
+" nnoremap <F3> :echo 'f3'<CR> "Send ^[ [13~
+" nnoremap <F4> :echo 'f4'<CR> "Send ^[ [14~
+" nnoremap <F5> :echo 'f5'<CR> "Send ^[ [15~
+" nnoremap <F6> :echo 'f6'<CR> "Send ^[ [17~
+" nnoremap <F7> :echo 'f7'<CR> "Send ^[ [18~
+" nnoremap <F8> :echo 'f8'<CR> "Send ^[ [19~
+" nnoremap <F9> :echo 'f9'<CR> "Send ^[ [20~
 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-" Rename symbol under cursor to a new word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for do codeAction of selected region
-" ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Apply AutoFix to problem on the current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Get and run code action(s) for current line
-nmap <leader>A <Plug>(coc-codeaction)
-
-
-
-" 5_Automatic_commands 🕹
-" ===
-
-" Automatically source the Vimrc file on save
-augroup autosourcing
-        autocmd!
-        autocmd BufWritePost $MYVIMRC source %
-augroup END
-
-" Go to definition via coc
-augroup coc
-    autocmd!
-    autocmd FileType javascript,typescript,php nmap <buffer> <silent> <C-]> <Plug>(coc-definition)
-augroup END
-
-
-
-" 6_Plugin_settings 📦
-" ===
-
-" 6a_Sneak 👞
-" ---
-
+" Sneak label-mode for a minimalist alternative to EasyMotion
 let g:sneak#label = 1
 
+" CHADTree settings
+let g:chadtree_settings =
+\ {
+\   'keymap': {
+\     'v_split': ['<C-v>'],
+\     'h_split': ['<C-x>'],
+\     'tertiary': ['<C-t>'],
+\   },
+\ }
 
-" 6b_NERDTree 🎄
-" ---
+" Telescope
+lua << EOF
+require('telescope').load_extension('fzf')
+EOF
 
-let NERDTreeShowHidden = 1
+" autopairs
+lua << EOF
+require('nvim-autopairs').setup()
+EOF
 
-let NERDTreeIgnore = [
-    \ '\.swp$',
-    \ '\~$',
-    \ '\.git$',
-    \ '.DS_Store$',
-    \ 'tags$',
-    \ '\.idea$',
-    \ ]
+" LSP config
+nnoremap gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap gD <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
 
+" LSP installer
+lua << EOF
+local lsp_installer = require('nvim-lsp-installer')
 
-" 6c_Gutentags 🗂
-" ---
+lsp_installer.on_server_ready(function(server)
+  local opts = {}
 
-let g:gutentags_ctags_extra_args = [
-    \ '--languages=PHP',
-    \ '--php-kinds=-v',
-    \ ]
+  if server.name == 'tailwindcss' then
+  end
 
+  server:setup(opts)
+end)
+EOF
 
-" 6d_fzf 🔎
-" ---
+" nvim-treesitter
+lua << EOF
+require('nvim-treesitter.configs').setup({
+  highlight = {
+    ensure_installed = 'maintained',
+    enable = true,
+  },
+})
+EOF
 
-" Vim specific fzf options
-let $FZF_DEFAULT_OPTS = '--color bg+:#eee8d5,fg+:#000000,hl+:#FF0000'
+" nvim-cmp
+set completeopt=menu,menuone,noselect
 
-let g:fzf_layout = { 'up': '~40%' }
+lua << EOF
+local cmp = require('cmp')
+local lspkind = require('lspkind')
 
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   "rg --column --line-number --no-heading --color=always --smart-case --hidden --glob '!.git' ".shellescape(<q-args>), 1, <bang>0
-  \ )
+cmp.setup({
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+    { name = 'path' },
+  }),
+
+  mapping = {
+    ['<C-y>'] = cmp.mapping.confirm({
+      select = true,
+    }),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end,
+    ['<S-Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end,
+  },
+
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end
+  },
+
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol_text',
+      menu = {
+        buffer = '[buf]',
+        nvim_lsp = '[LSP]',
+        path = '[PATH]',
+      },
+    })
+  },
+
+  experimental = {
+    ghost_text = true,
+  },
+})
+EOF
