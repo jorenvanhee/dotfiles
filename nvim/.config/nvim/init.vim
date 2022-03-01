@@ -10,10 +10,10 @@ Plug 'tpope/vim-commentary', { 'branch': 'master' }
 Plug 'tpope/vim-surround', { 'branch': 'master' }
 Plug 'tpope/vim-repeat', { 'branch': 'master' }
 Plug 'tpope/vim-abolish', { 'branch': 'master' }
-Plug 'windwp/nvim-autopairs', { 'branch': 'master' }
+Plug 'Raimondi/delimitMate', { 'branch': 'master' }
 Plug 'mattn/emmet-vim', { 'branch': 'master' }
 Plug 'neovim/nvim-lspconfig', { 'branch': 'master' }
-Plug 'williamboman/nvim-lsp-installer', { 'branch': 'master' }
+Plug 'williamboman/nvim-lsp-installer', { 'branch': 'main' }
 Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
@@ -23,6 +23,7 @@ Plug 'L3MON4D3/LuaSnip', { 'branch': 'master' }
 Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'master', 'do': ':TSUpdate' }
 Plug 'lepture/vim-jinja', { 'branch': 'master' }
 Plug 'tpope/vim-rails', { 'branch': 'master' }
+Plug 'ludovicchabant/vim-gutentags', { 'branch': 'master' }
 
 call plug#end()
 
@@ -117,9 +118,14 @@ nnoremap <F3> :CHADopen<CR>
 
 " Telescope
 nnoremap <F4> :Telescope find_files<CR>
+nnoremap <F8> :Telescope live_grep<CR>
 
 " Emmet
 imap <F5> <C-Y>,
+
+" Tags
+nnoremap <F6> :Telescope current_buffer_tags<CR>
+nnoremap <F7> :Telescope tags<CR>
 
 " http://aperiodic.net/phil/archives/Geekery/term-function-keys.html
 " nnoremap <F1> :echo 'f1'<CR> "Send ^[ [11~
@@ -143,16 +149,14 @@ let g:chadtree_settings =
 \     'h_split': ['<C-x>'],
 \     'tertiary': ['<C-t>'],
 \   },
+\   'options': {
+\     'follow': v:false,
+\   },
 \ }
 
 " Telescope
 lua << EOF
 require('telescope').load_extension('fzf')
-EOF
-
-" autopairs
-lua << EOF
-require('nvim-autopairs').setup()
 EOF
 
 " LSP config
@@ -242,3 +246,9 @@ cmp.setup({
   },
 })
 EOF
+
+" gutentags
+let g:gutentags_ctags_extra_args = [
+\ '--languages=PHP,ruby',
+\ '--php-kinds=-v',
+\ ]

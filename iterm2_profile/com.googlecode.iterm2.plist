@@ -4303,7 +4303,9 @@
 				<real>0.34509803921568627</real>
 			</dict>
 			<key>Bound Hosts</key>
-			<array/>
+			<array>
+				<string>!&amp;nvim</string>
+			</array>
 			<key>Character Encoding</key>
 			<integer>4</integer>
 			<key>Close Sessions On End</key>
