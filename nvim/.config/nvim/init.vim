@@ -25,6 +25,8 @@ Plug 'lepture/vim-jinja', { 'branch': 'master' }
 Plug 'tpope/vim-rails', { 'branch': 'master' }
 Plug 'ludovicchabant/vim-gutentags', { 'branch': 'master' }
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
+Plug 'kyazdani42/nvim-web-devicons', { 'branch': 'master' } " Required by lualine
+Plug 'nvim-lualine/lualine.nvim', { 'branch': 'master' }
 
 call plug#end()
 
@@ -286,5 +288,14 @@ lua << EOF
       map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
       map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
     end
+  })
+EOF
+
+" lualine
+lua << EOF
+  require('lualine').setup({
+    options = {
+      theme = 'solarized_light',
+    },
   })
 EOF
