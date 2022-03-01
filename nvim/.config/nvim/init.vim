@@ -1,7 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'romainl/flattened', { 'branch': 'master' }
-Plug 'nvim-lua/plenary.nvim', { 'branch': 'master' } " Required by telescope
+Plug 'nvim-lua/plenary.nvim', { 'branch': 'master' } " Required by telescope, gitsigns
 Plug 'nvim-telescope/telescope.nvim', { 'branch': 'master' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'make' }
 Plug 'ms-jpq/chadtree', { 'branch': 'chad', 'do': 'python3 -m chadtree deps' }
@@ -24,6 +24,7 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'master', 'do': ':TSUpdate' 
 Plug 'lepture/vim-jinja', { 'branch': 'master' }
 Plug 'tpope/vim-rails', { 'branch': 'master' }
 Plug 'ludovicchabant/vim-gutentags', { 'branch': 'master' }
+Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 
 call plug#end()
 
@@ -252,3 +253,38 @@ let g:gutentags_ctags_extra_args = [
 \ '--languages=PHP,ruby',
 \ '--php-kinds=-v',
 \ ]
+
+" gitsigns
+lua << EOF
+  require('gitsigns').setup({
+    on_attach = function(bufnr)
+      local function map(mode, lhs, rhs, opts)
+          opts = vim.tbl_extend('force', {noremap = true, silent = true}, opts or {})
+          vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
+      end
+
+      -- Navigation
+      map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
+      map('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
+
+      -- Actions
+      map('n', '<leader>hs', ':Gitsigns stage_hunk<CR>')
+      map('v', '<leader>hs', ':Gitsigns stage_hunk<CR>')
+      map('n', '<leader>hr', ':Gitsigns reset_hunk<CR>')
+      map('v', '<leader>hr', ':Gitsigns reset_hunk<CR>')
+      map('n', '<leader>hS', '<cmd>Gitsigns stage_buffer<CR>')
+      map('n', '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<CR>')
+      map('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<CR>')
+      map('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>')
+      map('n', '<leader>hb', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
+      map('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
+      map('n', '<leader>hd', '<cmd>Gitsigns diffthis<CR>')
+      map('n', '<leader>hD', '<cmd>lua require"gitsigns".diffthis("~")<CR>')
+      map('n', '<leader>td', '<cmd>Gitsigns toggle_deleted<CR>')
+
+      -- Text object
+      map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+      map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+    end
+  })
+EOF
