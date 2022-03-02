@@ -297,5 +297,6 @@ lua << EOF
     options = {
       theme = 'solarized_light',
     },
+    extensions = { 'chadtree' },
   })
 EOF
