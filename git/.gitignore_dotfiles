@@ -3,6 +3,6 @@
 *.swo
 .DS_Store
 .idea
-tags
-tags.lock
-tags.temp
+/tags
+/tags.lock
+/tags.temp

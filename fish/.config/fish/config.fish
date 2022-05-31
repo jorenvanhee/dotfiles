@@ -15,6 +15,7 @@ fnm env --multi | source
 # aliases
 
 abbr -a cat bat
+abbr -a a php artisan
 
 # overwrite some jhillyerd/plugin-git aliases
 abbr -a gm          git commit -m

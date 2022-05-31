@@ -11,9 +11,6 @@ brew cask install tableplus
 brew cask install harvest
 brew cask install postman
 brew cask install gitup
-
-# Manually installed the nightly version because I wanted neovim 0.4.0 with
-# support for floating windows.
-# brew cask install vimr
+brew cask install vimr
 
 brew cask install homebrew/cask-fonts/font-fira-code

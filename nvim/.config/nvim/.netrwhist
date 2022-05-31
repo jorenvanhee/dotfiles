@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/Users/joren/code/bopro.be/templates/_includes/articles'
+let g:netrw_dirhist_8='/Users/joren/code/bopro.be/vendor/yiisoft/yii2/views/errorHandler'
+let g:netrw_dirhist_7='/Users/joren/code/academy.bopro.be/templates/classes/_partials/downloads'
+let g:netrw_dirhist_6='/Users/joren/code/bopro.be/templates/_includes/content_blocks'
+let g:netrw_dirhist_5='/Users/joren/code/bopro.be/config/redactor'
+let g:netrw_dirhist_4='/Users/joren/code/bopro.be/resources/js/modules'
+let g:netrw_dirhist_3='/Users/joren/code/bopro.be/templates/_includes/footer'
+let g:netrw_dirhist_2='/Users/joren/code/craft-template-guard/vendor/craftcms/cms/src/db'
+let g:netrw_dirhist_1='/Users/joren/code/craft-template-guard/vendor/craftcms/cms/src/templates/tests'
+let g:netrw_dirhist_0='/Users/joren/code/craft-template-guard/vendor/craftcms/cms/src/templates'

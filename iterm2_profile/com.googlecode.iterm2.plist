@@ -4406,6 +4406,17 @@
 					<key>Version</key>
 					<integer>1</integer>
 				</dict>
+				<key>0x52-0x120000-0xf</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Label</key>
+					<string></string>
+					<key>Text</key>
+					<string>[18~</string>
+					<key>Version</key>
+					<integer>1</integer>
+				</dict>
 				<key>0x63-0x100000-0x8</key>
 				<dict>
 					<key>Action</key>
@@ -4425,6 +4436,28 @@
 					<string></string>
 					<key>Text</key>
 					<string>[15~</string>
+					<key>Version</key>
+					<integer>1</integer>
+				</dict>
+				<key>0x66-0x100000-0x3</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Label</key>
+					<string></string>
+					<key>Text</key>
+					<string>[19~</string>
+					<key>Version</key>
+					<integer>1</integer>
+				</dict>
+				<key>0x72-0x100000-0xf</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Label</key>
+					<string></string>
+					<key>Text</key>
+					<string>[17~</string>
 					<key>Version</key>
 					<integer>1</integer>
 				</dict>

@@ -13,20 +13,21 @@ Plug 'tpope/vim-abolish', { 'branch': 'master' }
 Plug 'Raimondi/delimitMate', { 'branch': 'master' }
 Plug 'mattn/emmet-vim', { 'branch': 'master' }
 Plug 'neovim/nvim-lspconfig', { 'branch': 'master' }
-Plug 'williamboman/nvim-lsp-installer', { 'branch': 'main' }
 Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
 Plug 'onsails/lspkind-nvim', { 'branch': 'master' }
 Plug 'L3MON4D3/LuaSnip', { 'branch': 'master' }
-Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'master', 'do': ':TSUpdate' }
 Plug 'lepture/vim-jinja', { 'branch': 'master' }
 Plug 'tpope/vim-rails', { 'branch': 'master' }
 Plug 'ludovicchabant/vim-gutentags', { 'branch': 'master' }
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'kyazdani42/nvim-web-devicons', { 'branch': 'master' } " Required by lualine
 Plug 'nvim-lualine/lualine.nvim', { 'branch': 'master' }
+Plug 'editorconfig/editorconfig-vim', { 'branch': 'master' }
+Plug 'lumiliet/vim-twig', { 'branch': 'master' }
+Plug 'maxmellon/vim-jsx-pretty', { 'branch': 'master' }
 
 call plug#end()
 
@@ -167,28 +168,18 @@ nnoremap gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
 
-" LSP installer
+" Language servers
 lua << EOF
-local lsp_installer = require('nvim-lsp-installer')
-
-lsp_installer.on_server_ready(function(server)
-  local opts = {}
-
-  if server.name == 'tailwindcss' then
-  end
-
-  server:setup(opts)
-end)
-EOF
-
-" nvim-treesitter
-lua << EOF
-require('nvim-treesitter.configs').setup({
-  highlight = {
-    ensure_installed = 'maintained',
-    enable = true,
-  },
-})
+require'lspconfig'.tailwindcss.setup{
+  filetypes = { "html.twig", "javascriptreact" },
+  init_options = {
+    userLanguages = {
+      ['html.twig'] = 'html'
+    }
+  }
+}
+require'lspconfig'.intelephense.setup{}
+require'lspconfig'.tsserver.setup{}
 EOF
 
 " nvim-cmp
