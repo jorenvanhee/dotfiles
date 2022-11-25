@@ -1,0 +1,17 @@
+config:
+  backup: true
+  banner: true
+  create: true
+  dotpath: dotfiles
+  keepdot: false
+  link_dotfile_default: absolute
+  link_on_import: nolink
+  longkey: false
+dotfiles:
+  nvim:
+    dst: ~/.config/nvim
+    src: nvim
+profiles:
+  jorens-macbook.local:
+    dotfiles:
+    - nvim
