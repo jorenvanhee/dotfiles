@@ -5,13 +5,22 @@ config:
   dotpath: dotfiles
   keepdot: false
   link_dotfile_default: absolute
-  link_on_import: nolink
+  link_on_import: absolute
   longkey: false
+  key_prefix: false
 dotfiles:
   nvim:
     dst: ~/.config/nvim
     src: nvim
+  gitconfig:
+    src: gitconfig
+    dst: ~/.gitconfig
+  gitignore:
+    src: gitignore
+    dst: ~/.gitignore
 profiles:
   jorens-macbook.local:
     dotfiles:
     - nvim
+    - gitconfig
+    - gitignore

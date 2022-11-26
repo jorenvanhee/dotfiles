@@ -1,0 +1,5 @@
+[user]
+    name = Joren Van Hee
+    email = 231202+jorenvanhee@users.noreply.github.com
+[core]
+    excludesfile = ~/.gitignore
