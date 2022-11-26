@@ -8,10 +8,17 @@ config:
   link_on_import: absolute
   longkey: false
   key_prefix: false
+actions:
+  pre:
+    packer-install: test -e ~/.local/share/nvim/site/pack/packer/start/packer.nvim || git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+  packer: nvim +PackerSync +qall
 dotfiles:
   nvim:
     dst: ~/.config/nvim
     src: nvim
+    actions:
+      - packer-install
+      - packer
   gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
