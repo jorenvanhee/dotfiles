@@ -19,6 +19,8 @@ local on_attach = function(client, bufnr)
             border = 'rounded',
         })
     end)
+
+    require("lsp_signature").on_attach({}, bufnr)
 end
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it
