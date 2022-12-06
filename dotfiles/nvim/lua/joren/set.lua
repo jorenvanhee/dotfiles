@@ -10,6 +10,7 @@ vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.signcolumn = "yes"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.opt.background = "light"
 
 vim.g.mapleader = ","
 
