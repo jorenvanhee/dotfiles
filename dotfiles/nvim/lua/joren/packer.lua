@@ -37,4 +37,5 @@ return require('packer').startup(function(use)
             ts_update()
         end,
     }
+    use("gpanders/editorconfig.nvim")
 end)
