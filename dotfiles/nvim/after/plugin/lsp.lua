@@ -52,3 +52,13 @@ require("lspconfig")["cssls"].setup({
         css = { validate = false },
     },
 })
+
+require("lspconfig")["tsserver"].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+
+require("lspconfig")["eslint"].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
