@@ -14,7 +14,7 @@ cmp.setup({
     },
     mapping = cmp.mapping.preset.insert({
         -- Confirm could do additional text edits that it gets from the LSP.
-        ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-f>"] = cmp.mapping.confirm({ select = true }),
         ["<C-u>"] = cmp.mapping.scroll_docs(-4),
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
     }),
