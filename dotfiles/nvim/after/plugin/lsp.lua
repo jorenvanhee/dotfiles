@@ -20,7 +20,9 @@ local on_attach = function(client, bufnr)
         })
     end)
 
-    require("lsp_signature").on_attach({}, bufnr)
+    require("lsp_signature").on_attach({
+        hint_enable = false,
+    }, bufnr)
 end
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it
