@@ -39,3 +39,10 @@ nnoremap("<Leader>ç", "9gt")
 -- Center the screen after navigating to the next and previous search results.
 nnoremap("n", "nzz")
 nnoremap("N", "Nzz")
+
+-- Copy current file and line number to clipboard.
+--
+-- Sources:
+-- https://www.nesono.com/node/448
+-- https://stackoverflow.com/questions/4525261/getting-relative-paths-in-vim
+nnoremap("<Leader>yy", ":let @+=expand('%:~:.').':'.line('.')<CR>")
