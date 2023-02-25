@@ -29,7 +29,6 @@ return require('packer').startup(function(use)
     use("lewis6991/gitsigns.nvim")
     use("mattn/emmet-vim")
     use("ray-x/lsp_signature.nvim")
-    use("tpope/vim-rails")
     use {
         'nvim-treesitter/nvim-treesitter',
         run = function()
@@ -37,5 +36,4 @@ return require('packer').startup(function(use)
             ts_update()
         end,
     }
-    use("gpanders/editorconfig.nvim")
 end)
