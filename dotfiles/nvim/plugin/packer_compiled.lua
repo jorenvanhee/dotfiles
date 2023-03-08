@@ -169,6 +169,11 @@ _G.packer_plugins = {
     path = "/Users/joren/.local/share/nvim/site/pack/packer/start/vim-abolish",
     url = "https://github.com/tpope/vim-abolish"
   },
+  ["vim-blade"] = {
+    loaded = true,
+    path = "/Users/joren/.local/share/nvim/site/pack/packer/start/vim-blade",
+    url = "https://github.com/jwalton512/vim-blade"
+  },
   ["vim-commentary"] = {
     loaded = true,
     path = "/Users/joren/.local/share/nvim/site/pack/packer/start/vim-commentary",
