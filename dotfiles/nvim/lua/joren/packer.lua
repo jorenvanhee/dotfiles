@@ -38,4 +38,5 @@ return require('packer').startup(function(use)
     }
     use("nvim-tree/nvim-web-devicons")
     use("jwalton512/vim-blade")
+    use("sbdchd/neoformat")
 end)

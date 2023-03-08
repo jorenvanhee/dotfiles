@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/Users/joren/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
     url = "https://github.com/onsails/lspkind.nvim"
   },
+  neoformat = {
+    loaded = true,
+    path = "/Users/joren/.local/share/nvim/site/pack/packer/start/neoformat",
+    url = "https://github.com/sbdchd/neoformat"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/Users/joren/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
