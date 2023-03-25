@@ -2,8 +2,13 @@ local M = {}
 
 local function map_fn(op, outer_opts)
     outer_opts = outer_opts or { noremap = true }
-    return function(lhs, rhs, opts)
+    return function(lhs, rhs, desc, opts)
         opts = vim.tbl_extend("force", outer_opts, opts or {})
+
+        if desc then
+            opts.desc = desc
+        end
+
         vim.keymap.set(op, lhs, rhs, opts)
     end
 end
