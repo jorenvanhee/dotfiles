@@ -1,14 +1,18 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
     ensure_installed = {
-        -- Let's try phpactor instead of intelephense since some intelephense
-        -- features are paid.
         "phpactor",
         "volar",
         "tsserver",
         "tailwindcss",
         "cssls",
         "eslint",
+    }
+})
+require("mason-null-ls").setup({
+    ensure_installed = {
+        "stylua",
+        "jq",
     }
 })
 

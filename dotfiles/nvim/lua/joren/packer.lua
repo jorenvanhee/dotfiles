@@ -40,4 +40,6 @@ return require('packer').startup(function(use)
     }
     use("nvim-tree/nvim-web-devicons")
     use("jwalton512/vim-blade")
+    use("jose-elias-alvarez/null-ls.nvim")
+    use("jay-babu/mason-null-ls.nvim")
 end)
