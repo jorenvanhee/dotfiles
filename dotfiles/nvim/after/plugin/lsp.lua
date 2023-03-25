@@ -1,3 +1,17 @@
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        -- Let's try phpactor instead of intelephense since some intelephense
+        -- features are paid.
+        "phpactor",
+        "volar",
+        "tsserver",
+        "tailwindcss",
+        "cssls",
+        "eslint",
+    }
+})
+
 local Remap = require("joren.keymap")
 local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
@@ -29,8 +43,6 @@ end
 -- to LSP servers..
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
--- Let's try phpactor instead of intelephense since some intelephense features
--- are paid.
 require("lspconfig")["phpactor"].setup({
     on_attach = on_attach,
     capabilities = capabilities,
