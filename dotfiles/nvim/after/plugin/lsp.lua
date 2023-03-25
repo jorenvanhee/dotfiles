@@ -7,13 +7,13 @@ require("mason-lspconfig").setup({
         "tailwindcss",
         "cssls",
         "eslint",
-    }
+    },
 })
 require("mason-null-ls").setup({
     ensure_installed = {
         "stylua",
         "jq",
-    }
+    },
 })
 
 local Remap = require("joren.keymap")
@@ -25,7 +25,9 @@ vim.diagnostic.config({
 })
 
 local on_attach = function(client, bufnr)
-    nnoremap("K", function() vim.lsp.buf.hover() end)
+    nnoremap("K", function()
+        vim.lsp.buf.hover()
+    end)
     nnoremap("gd", vim.lsp.buf.definition)
     nnoremap("gi", vim.lsp.buf.implementation)
     nnoremap("gr", vim.lsp.buf.references)
@@ -34,7 +36,7 @@ local on_attach = function(client, bufnr)
     nnoremap("<Leader>sd", function()
         vim.diagnostic.open_float(nil, {
             focus = false,
-            border = 'rounded',
+            border = "rounded",
         })
     end)
 
@@ -45,7 +47,7 @@ end
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it
 -- to LSP servers..
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 require("lspconfig")["phpactor"].setup({
     on_attach = on_attach,

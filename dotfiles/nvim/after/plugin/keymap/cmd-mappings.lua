@@ -30,7 +30,7 @@ local noremap = Remap.noremap
 --
 -- <F1> -> <CMD+s>
 nnoremap("<F1>", ":w<CR>")
-noremap({ 'i', 'v' }, "<F1>", "<Esc>:w<CR>")
+noremap({ "i", "v" }, "<F1>", "<Esc>:w<CR>")
 
 -- Emmet expand. For some reason this only works if I use vim script imap
 -- instead of neovims vim.keymap.set.
@@ -41,4 +41,4 @@ vim.cmd("imap <F2> <C-Y>,")
 -- Copy selection to clipboard.
 --
 -- <F3> -> <CMD+c>
-vnoremap("<F3>", "\"+y")
+vnoremap("<F3>", '"+y')

@@ -1,5 +1,5 @@
 local cmp = require("cmp")
-local lspkind = require('lspkind')
+local lspkind = require("lspkind")
 
 cmp.setup({
     -- Completion sources ordered by priority.

@@ -28,7 +28,7 @@ nnoremap("<Leader>t", ":NvimTreeToggle<CR>")
 -- numbers on an azerty keyboard.
 nnoremap("<Leader>&", "1gt")
 nnoremap("<Leader>é", "2gt")
-nnoremap("<Leader>\"", "3gt")
+nnoremap('<Leader>"', "3gt")
 nnoremap("<Leader>'", "4gt")
 nnoremap("<Leader>(", "5gt")
 nnoremap("<Leader>§", "6gt")
