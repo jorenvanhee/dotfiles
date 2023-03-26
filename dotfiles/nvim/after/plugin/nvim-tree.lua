@@ -1,8 +1,10 @@
 require("nvim-tree").setup({
     open_on_setup = false,
     git = {
-        enable = false,
+        enable = true,
+        ignore = true,
     },
+    filters = { custom = { "^.git$" } },
     renderer = {
         icons = {
             show = {
