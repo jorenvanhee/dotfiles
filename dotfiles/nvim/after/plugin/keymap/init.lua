@@ -14,6 +14,10 @@ nnoremap("gh", "^<Esc>", "line start")
 xnoremap("gh", "^", "line start")
 nnoremap("gl", "$", "line end")
 xnoremap("gl", "$", "line end")
+nnoremap("gd", require("telescope.builtin").lsp_definitions, "definition")
+nnoremap("gi", require("telescope.builtin").lsp_implementations, "implementation")
+nnoremap("gr", require("telescope.builtin").lsp_references, "references")
+nnoremap("gt", require("telescope.builtin").lsp_type_definitions, "type definition")
 
 -- Space mode mappings, inspired by Helix
 nnoremap("<Space>f", require("telescope.builtin").find_files, "open file picker")
