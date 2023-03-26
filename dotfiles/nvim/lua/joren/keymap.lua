@@ -13,7 +13,11 @@ local function map_fn(op, outer_opts)
     end
 end
 
-local function noremap(op, lhs, rhs, opts)
+local function noremap(op, lhs, rhs, desc, opts)
+    if desc then
+        opts.desc = desc
+    end
+
     map_fn(op)(lhs, rhs, opts)
 end
 

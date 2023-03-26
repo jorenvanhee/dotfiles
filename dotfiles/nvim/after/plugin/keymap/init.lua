@@ -1,4 +1,5 @@
 local Remap = require("joren.keymap")
+local noremap = Remap.noremap
 local nnoremap = Remap.nnoremap
 local vnoremap = Remap.vnoremap
 local inoremap = Remap.inoremap
@@ -7,10 +8,25 @@ local xnoremap = Remap.xnoremap
 -- Go to normal mode.
 inoremap("jf", "<Esc>")
 
--- Caret can't be used to go to the beginning of a line when using azerty.
--- Remap it.
-nnoremap("<Space>", "^<Esc>")
-xnoremap("<Space>", "^")
+-- Goto mode mappings, inspired by Helix.
+-- Caret needs an escape because it's a dead key on azerty.
+nnoremap("gh", "^<Esc>", "line start")
+xnoremap("gh", "^", "line start")
+nnoremap("gl", "$", "line end")
+xnoremap("gl", "$", "line end")
+
+-- Space mode mappings, inspired by Helix
+nnoremap("<Space>f", require("telescope.builtin").find_files, "open file picker")
+nnoremap("<Space>b", require("telescope.builtin").buffers, "open buffer picker")
+nnoremap("<Space>j", require("telescope.builtin").jumplist, "open jumplist picker")
+nnoremap("<Space>s", require("telescope.builtin").lsp_document_symbols, "open symbol picker")
+nnoremap("<Space>S", require("telescope.builtin").lsp_workspace_symbols, "open workspace symbol picker")
+nnoremap("<Space>d", function()
+    require("telescope.builtin").diagnostics({ bufnr = 0 })
+end, "open diagnostic picker")
+nnoremap("<Space>'", require("telescope.builtin").resume, "open last picker")
+nnoremap("<Space>/", require("telescope.builtin").live_grep, "global search in workspace")
+nnoremap("<Space>?", require("telescope.builtin").commands, "open command palette")
 
 -- Remove search highlight.
 nnoremap("<Leader><Space>", ":nohlsearch<CR>")
