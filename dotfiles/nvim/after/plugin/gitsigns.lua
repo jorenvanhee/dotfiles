@@ -14,7 +14,7 @@ require("gitsigns").setup({
                 gs.next_hunk()
             end)
             return "<Ignore>"
-        end, "next hunk", { expr = true })
+        end, "Next hunk", { expr = true })
 
         nnoremap("[c", function()
             if vim.wo.diff then
@@ -24,18 +24,18 @@ require("gitsigns").setup({
                 gs.prev_hunk()
             end)
             return "<Ignore>"
-        end, "previous hunk", { expr = true })
+        end, "Previous hunk", { expr = true })
 
         -- Actions
-        nnoremap("<Leader>hs", ":Gitsigns stage_hunk<CR>")
-        nnoremap("<Leader>hr", ":Gitsigns reset_hunk<CR>")
-        nnoremap("<Leader>hS", gs.stage_buffer)
-        nnoremap("<Leader>hu", gs.undo_stage_hunk)
-        nnoremap("<Leader>hR", gs.reset_buffer)
-        nnoremap("<Leader>hp", gs.preview_hunk)
+        nnoremap("<Leader>hs", ":Gitsigns stage_hunk<CR>", "Stage hunk")
+        nnoremap("<Leader>hr", ":Gitsigns reset_hunk<CR>", "Reset hunk")
+        nnoremap("<Leader>hS", gs.stage_buffer, "Stage buffer")
+        nnoremap("<Leader>hu", gs.undo_stage_hunk, "Undo stage hunk")
+        nnoremap("<Leader>hR", gs.reset_buffer, "Reset buffer")
+        nnoremap("<Leader>hp", gs.preview_hunk, "Preview hunk")
         nnoremap("<Leader>hb", function()
             gs.blame_line({ full = true })
-        end)
-        nnoremap("<Leader>hd", gs.diffthis)
+        end, "Blame hunk")
+        nnoremap("<Leader>hd", gs.diffthis, "Diff hunk")
     end,
 })

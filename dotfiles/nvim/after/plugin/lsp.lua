@@ -27,15 +27,15 @@ vim.diagnostic.config({
 local on_attach = function(client, bufnr)
     nnoremap("K", function()
         vim.lsp.buf.hover()
-    end, "show docs for item under cursor")
-    nnoremap("<Space>r", vim.lsp.buf.rename, "rename symbol")
-    nnoremap("<Space>a", vim.lsp.buf.code_action, "perform code action")
+    end, "Show docs for item under cursor")
+    nnoremap("<Space>r", vim.lsp.buf.rename, "Rename symbol")
+    nnoremap("<Space>a", vim.lsp.buf.code_action, "Perform code action")
     nnoremap("<Leader>sd", function()
         vim.diagnostic.open_float(nil, {
             focus = false,
             border = "rounded",
         })
-    end, "show diagnostic for item under cursor")
+    end, "Show diagnostic for item under cursor")
 
     require("lsp_signature").on_attach({
         hint_enable = false,
