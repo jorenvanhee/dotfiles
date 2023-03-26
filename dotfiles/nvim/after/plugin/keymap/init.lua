@@ -33,7 +33,7 @@ nnoremap("<Space>/", require("telescope.builtin").live_grep, "Global search in w
 nnoremap("<Space>?", require("telescope.builtin").commands, "Open command palette")
 
 -- Remove search highlight.
-nnoremap("<Leader><Space>", ":nohlsearch<CR>")
+nnoremap("<Leader><Space>", ":nohlsearch<CR>", "Remove search highlight")
 
 -- Better pane navigation.
 nnoremap("<C-j>", "<C-w><C-j>")
@@ -42,19 +42,19 @@ nnoremap("<C-h>", "<C-w><C-h>")
 nnoremap("<C-l>", "<C-w><C-l>")
 
 -- Nvim tree.
-nnoremap("<Leader>t", ":NvimTreeToggle<CR>")
+nnoremap("<Leader>t", ":NvimTreeToggle<CR>", "Toggle file explorer")
 
 -- Faster tab navigation. Leader key followed by the characters under the
 -- numbers on an azerty keyboard.
-nnoremap("<Leader>&", "1gt")
-nnoremap("<Leader>é", "2gt")
-nnoremap('<Leader>"', "3gt")
-nnoremap("<Leader>'", "4gt")
-nnoremap("<Leader>(", "5gt")
-nnoremap("<Leader>§", "6gt")
-nnoremap("<Leader>è", "7gt")
-nnoremap("<Leader>!", "8gt")
-nnoremap("<Leader>ç", "9gt")
+nnoremap("<Leader>&", "1gt", "Tab 1")
+nnoremap("<Leader>é", "2gt", "Tab 2")
+nnoremap('<Leader>"', "3gt", "Tab 3")
+nnoremap("<Leader>'", "4gt", "Tab 4")
+nnoremap("<Leader>(", "5gt", "Tab 5")
+nnoremap("<Leader>§", "6gt", "Tab 6")
+nnoremap("<Leader>è", "7gt", "Tab 7")
+nnoremap("<Leader>!", "8gt", "Tab 8")
+nnoremap("<Leader>ç", "9gt", "Tab 9")
 
 -- Center the screen after navigating to the next and previous search results.
 nnoremap("n", "nzz")
@@ -65,4 +65,4 @@ nnoremap("N", "Nzz")
 -- Sources:
 -- https://www.nesono.com/node/448
 -- https://stackoverflow.com/questions/4525261/getting-relative-paths-in-vim
-nnoremap("<Leader>yy", ":let @+=expand('%:~:.').':'.line('.')<CR>")
+nnoremap("<Leader>yy", ":let @+=expand('%:~:.').':'.line('.')<CR>", "Copy current filename and line number")
