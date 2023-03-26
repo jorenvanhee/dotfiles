@@ -14,6 +14,11 @@ return require("packer").startup(function(use)
     use("hrsh7th/cmp-nvim-lsp")
     use("onsails/lspkind.nvim")
 
+    -- Snippets
+    use("L3MON4D3/LuaSnip")
+    use("rafamadriz/friendly-snippets")
+    use("saadparwaiz1/cmp_luasnip")
+
     -- File explorer
     use("nvim-tree/nvim-tree.lua")
     use("nvim-tree/nvim-web-devicons")
