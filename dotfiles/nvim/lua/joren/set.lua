@@ -12,6 +12,9 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.background = "light"
 
+-- Prevent vim-sneak from adding a mapping to ",", that prevents
+-- which-key.nvim from doing its work.
+vim.api.nvim_set_keymap("n", ",", "<NOP>", { noremap = true, silent = true })
 vim.g.mapleader = ","
 
 -- This setting doesn't work when being set in the after directory.
