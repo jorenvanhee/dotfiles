@@ -13,6 +13,7 @@ require("mason-null-ls").setup({
     ensure_installed = {
         "stylua",
         "jq",
+        "prettier",
     },
 })
 
@@ -40,6 +41,13 @@ local on_attach = function(client, bufnr)
     require("lsp_signature").on_attach({
         hint_enable = false,
     }, bufnr)
+
+    -- Disable formatting for some clients because we have detecated formatters
+    -- through null-ls (e.g. prettier).
+    if client.name == "volar" then
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+    end
 end
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it

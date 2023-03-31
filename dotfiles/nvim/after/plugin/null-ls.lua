@@ -5,5 +5,6 @@ null_ls.setup({
     sources = {
         formatting.stylua,
         formatting.pint,
+        formatting.prettier,
     },
 })
