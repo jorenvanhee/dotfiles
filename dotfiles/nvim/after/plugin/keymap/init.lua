@@ -61,8 +61,8 @@ nnoremap("n", "nzz")
 nnoremap("N", "Nzz")
 
 -- Close buffers
-nnoremap("<Leader>x", ":%bufdo bd<CR>", "Close all buffers")
-nnoremap("<Leader>X", ":%bufdo bd!<CR>", "Force close all buffers")
+nnoremap("<Leader>x", ":bufdo bd<CR>", "Close all buffers")
+nnoremap("<Leader>X", ":bufdo bd!<CR>", "Force close all buffers")
 
 -- Copy current file and line number to clipboard.
 --
