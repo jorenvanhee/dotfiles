@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/Users/joren/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["Vim-Jinja2-Syntax"] = {
+    loaded = true,
+    path = "/Users/joren/.local/share/nvim/site/pack/packer/start/Vim-Jinja2-Syntax",
+    url = "https://github.com/Glench/Vim-Jinja2-Syntax"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/joren/.local/share/nvim/site/pack/packer/start/cmp-buffer",

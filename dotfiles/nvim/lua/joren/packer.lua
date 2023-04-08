@@ -26,6 +26,7 @@ return require("packer").startup(function(use)
     -- Syntax highlighting
     use("lumiliet/vim-twig")
     use("jwalton512/vim-blade")
+    use("Glench/Vim-Jinja2-Syntax")
 
     -- LSP related
     use("neovim/nvim-lspconfig")
