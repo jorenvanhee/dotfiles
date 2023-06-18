@@ -25,12 +25,16 @@ dotfiles:
   gitignore:
     src: gitignore
     dst: ~/.gitignore
+  fish:
+    src: fish
+    dst: ~/.config/fish
 profiles:
   jorens-macbook.local:
     dotfiles:
     - nvim
     - gitconfig
     - gitignore
+    - fish
     variables:
       git_email: 231202+jorenvanhee@users.noreply.github.com
   jorens-macbook-work.local:
