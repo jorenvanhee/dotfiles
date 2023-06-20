@@ -70,3 +70,6 @@ nnoremap("<Leader>X", ":bufdo bd!<CR>", "Force close all buffers")
 -- https://www.nesono.com/node/448
 -- https://stackoverflow.com/questions/4525261/getting-relative-paths-in-vim
 nnoremap("<Leader>yy", ":let @+=expand('%:~:.').':'.line('.')<CR>", "Copy current filename and line number")
+
+-- Format code with null-ls
+nnoremap("<Leader>f", ":lua vim.lsp.buf.format({ async = true })<CR>", "Format buffer")
