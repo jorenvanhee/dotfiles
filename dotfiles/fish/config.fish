@@ -1,3 +1,5 @@
+source ~/.config/fish/path.fish
+
 # Setup zoxide
 zoxide init fish | source
 
