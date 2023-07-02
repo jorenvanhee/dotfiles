@@ -1,5 +1,8 @@
 source ~/.config/fish/path.fish
 
+# Setup fnm
+fnm env --use-on-cd | source
+
 # Setup zoxide
 zoxide init fish | source
 
