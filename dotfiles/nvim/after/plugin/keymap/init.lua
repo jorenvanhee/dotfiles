@@ -43,6 +43,7 @@ nnoremap("<C-l>", "<C-w><C-l>")
 
 -- Nvim tree.
 nnoremap("<Leader>t", ":NvimTreeToggle<CR>", "Toggle file explorer")
+nnoremap("<Leader>gt", ":NvimTreeFindFileToggle<CR>", "Toggle file explorer with current file open")
 
 -- Faster tab navigation. Leader key followed by the characters under the
 -- numbers on an azerty keyboard.
