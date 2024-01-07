@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+select_path() {
+    running_session_suffix=" (*)"
+
+    running_sessions=($(pgrep tmux >/dev/null && tmux ls -F "#{session_path}" || :))
+    running_sessions_regex=$(printf "^%s$|" "${running_sessions[@]}" | sed "s/|$//")
+    dirs_without_running_sessions=($(
+        find ~/code -mindepth 1 -maxdepth 1 -type d |
+        grep -vE "$running_sessions_regex"
+    ))
+
+    options=$(
+        [[ ${#running_sessions[@]} -gt 0 ]] && \
+            printf "%s$running_session_suffix\n" "${running_sessions[@]}"
+        printf "%s\n" "${dirs_without_running_sessions[@]}"
+    )
+
+    # Display the home directory in a more compact form (~).
+    options=${options//$HOME/\~}
+
+    selected_option=$(echo "$options" | fzf)
+
+    # Expand the home directory in the selected option to match the format
+    # used by the find command, ensuring compatibility with
+    # running_sessions_regex. Also remove the running_session_suffix.
+    selected_option="${selected_option//\~/$HOME}"
+    selected_option="${selected_option//$running_session_suffix/}"
+
+    echo $selected_option
+}
+
+# If an argument is supplied.
+if [[ $# -eq 1 ]]; then
+    # Make sure we get the full path, this is helpful when a dot (.) is passed.
+    selected_path=$(readlink -f $1)
+else
+    selected_path=$(select_path)
+fi
+
+# If $selected_path is empty.
+if [[ -z $selected_path ]]; then
+    exit 0
+fi
+
+session_name=$(basename $selected_path | tr . -)
+
+# If inside of tmux.
+if [ "$TERM_PROGRAM" = tmux ]; then
+    # Create session if needed.
+    if ! tmux has-session -t=$session_name; then
+        tmux new-session -ds $session_name -c $selected_path
+    fi
+
+    # Switch to session.
+    tmux switch-client -t $session_name
+else
+    # Create session or attach if the session already exists.
+    tmux new-session -As $session_name -c $selected_path
+fi
