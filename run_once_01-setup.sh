@@ -15,3 +15,7 @@ if [ ! -d "$packer_path" ]; then
   git clone --depth 1 https://github.com/wbthomason/packer.nvim $packer_path
   nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 fi
+
+# Install Laravel Valet.
+composer global require laravel/valet
+~/.composer/vendor/bin/valet install --no-interaction

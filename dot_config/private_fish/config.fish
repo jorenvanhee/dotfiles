@@ -1,5 +1,6 @@
 # Add to path.
 fish_add_path ~/.local/bin
+fish_add_path ~/.composer/vendor/bin
 
 # Fast Node Manager (fnm).
 fnm env --use-on-cd | source
