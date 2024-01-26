@@ -2,3 +2,6 @@ Host *
   AddKeysToAgent yes
   UseKeychain yes
   IdentityFile ~/.ssh/id_ed25519
+
+# Use this for configuration that should not be tracked by git.
+Include config_local
