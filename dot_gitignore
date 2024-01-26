@@ -4,3 +4,4 @@
 /tags.temp
 .idea
 vendor/bundle
+/.phpactor.json
