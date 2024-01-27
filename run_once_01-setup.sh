@@ -7,7 +7,9 @@ brew bundle
 if ! grep --quiet "$(which fish)" /etc/shells; then
   echo $(which fish) | sudo tee -a /etc/shells
 fi
-chsh -s $(which fish)
+if [ "$SHELL" == "$(which fish)" ]; then
+    chsh -s $(which fish)
+fi
 
 # Install packer.nvim
 packer_path="$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
@@ -17,5 +19,7 @@ if [ ! -d "$packer_path" ]; then
 fi
 
 # Install Laravel Valet.
-composer global require laravel/valet
-~/.composer/vendor/bin/valet install --no-interaction
+if ! command -v valet &> /dev/null; then
+    composer global require laravel/valet
+    ~/.composer/vendor/bin/valet install --no-interaction
+fi
