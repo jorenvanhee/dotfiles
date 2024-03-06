@@ -7,7 +7,7 @@ brew bundle
 if ! grep --quiet "$(which fish)" /etc/shells; then
   echo $(which fish) | sudo tee -a /etc/shells
 fi
-if [ "$SHELL" == "$(which fish)" ]; then
+if [ "$SHELL" != "$(which fish)" ]; then
     chsh -s $(which fish)
 fi
 
