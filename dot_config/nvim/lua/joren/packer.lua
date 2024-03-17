@@ -7,6 +7,7 @@ return require("packer").startup(function(use)
 
     -- Color schemes
     use("folke/tokyonight.nvim")
+    use { "catppuccin/nvim", as = "catppuccin" }
 
     -- Completion
     use("hrsh7th/nvim-cmp")
