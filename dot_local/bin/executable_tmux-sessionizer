@@ -1,51 +1,91 @@
 #!/usr/bin/env bash
 
-select_path() {
+paths_separated_by_newlines=$(find ~/code -mindepth 1 -maxdepth 1 -type d)
+default_working_dir="~"
+
+# This function presents you with a list of options that includes:
+#
+# - Paths to directories (provided by argument 1).
+# - Paths to directories where a tmux session is running.
+# - Names of tmux sessions running with the default working directory (provided
+#   by argument 2)
+#
+# Arguments:
+#
+# 1: Paths to directories to choose from, separated by newlines.
+# 2: Path to the default working directory.
+#
+# Returns one of the following:
+#
+# - A path that may or may not have a tmux session running.
+# - Name of a tmux session running with the default working directory.
+# - The search query when no result is found. This can be used to start a tmux
+#   session in the default working directory with the query as session name.
+tmux_session_selector() {
+    paths_separated_by_newlines=$1
+    default_working_dir="${2//\~/$HOME}"
     running_session_suffix=" (*)"
 
-    running_sessions=($(pgrep tmux >/dev/null && tmux ls -F "#{session_path}" || :))
+    # List running tmux sessions. If the working directory (session_path) is
+    # set to the default working directory, return the session name. Otherwise,
+    # return the working directory.
+    running_sessions=($(pgrep tmux >/dev/null && tmux ls -F "#{?#{==:#{session_path},$default_working_dir},#{session_name},#{session_path}}" || :))
+
     running_sessions_regex=$(printf "^%s$|" "${running_sessions[@]}" | sed "s/|$//")
-    dirs_without_running_sessions=($(
-        find ~/code -mindepth 1 -maxdepth 1 -type d |
+
+    paths_without_running_sessions=($(
+        echo "${paths_separated_by_newlines}" |
         grep -vE "$running_sessions_regex"
     ))
 
     options=$(
         [[ ${#running_sessions[@]} -gt 0 ]] && \
             printf "%s$running_session_suffix\n" "${running_sessions[@]}"
-        printf "%s\n" "${dirs_without_running_sessions[@]}"
+        printf "%s\n" "${paths_without_running_sessions[@]}"
     )
 
     # Display the home directory in a more compact form (~).
     options=${options//$HOME/\~}
 
-    selected_option=$(echo "$options" | fzf)
+    # Get the selected option. If no result was found, use the query as the
+    # selected option.
+    query_and_selected_option=$(echo "$options" | fzf --print-query)
+    selected_option=$(echo "$query_and_selected_option" | tail -n 1)
 
-    # Expand the home directory in the selected option to match the format
-    # used by the find command, ensuring compatibility with
-    # running_sessions_regex. Also remove the running_session_suffix.
     selected_option="${selected_option//\~/$HOME}"
     selected_option="${selected_option//$running_session_suffix/}"
 
     echo $selected_option
 }
 
-# If an argument is supplied.
+# Is the script called with one argument?
 if [[ $# -eq 1 ]]; then
-    # Make sure we get the full path, this is helpful when a dot (.) is passed.
-    selected_path=$(readlink -f $1)
+    # Expand relative paths is (e.g. "./").
+    selected_path=$(readlink -f "$1")
+
+    # Just use the argument if readlink didn't return anything (invalid path).
+    if [ -z "$selected_path" ]; then
+        selected_path="$1"
+    fi
+# No argument? Use the tmux_session_selector.
 else
-    selected_path=$(select_path)
+    selected_path=$(tmux_session_selector "$paths_separated_by_newlines" "$default_working_dir")
 fi
 
-# If $selected_path is empty.
+# Exit if the $selected_path is empty.
 if [[ -z $selected_path ]]; then
     exit 0
 fi
 
 session_name=$(basename $selected_path | tr . -)
 
-# If inside of tmux.
+# Fallback to the default working dir if the selected path does not exist. This
+# allows us to create named tmux sessions in the default working dir.
+if [ ! -d "$selected_path" ]; then
+    selected_path="${default_working_dir//\~/$HOME}"
+fi
+
+# Are we inside of tmux?
 if [ "$TERM_PROGRAM" = tmux ]; then
     # Create session if needed.
     if ! tmux has-session -t=$session_name; then
