@@ -90,6 +90,11 @@ require("lspconfig")["tsserver"].setup({
     capabilities = capabilities,
 })
 
+require("lspconfig")["svelte"].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+
 require("lspconfig")["eslint"].setup({
     on_attach = on_attach,
     capabilities = capabilities,
