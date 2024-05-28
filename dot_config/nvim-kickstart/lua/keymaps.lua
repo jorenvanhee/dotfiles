@@ -40,6 +40,10 @@ vim.keymap.set('n', '<leader>9', "9gt", { desc = "Tab 9" })
 vim.keymap.set('n', 'n', 'nzz', { desc = 'Go to next search result and center' })
 vim.keymap.set('n', 'N', 'Nzz', { desc = 'Go to previous search result and center' })
 
+-- Close buffers
+vim.keymap.set('n', '<leader>x', ':%bd<cr>', { desc = 'Close all buffers' })
+vim.keymap.set('n', '<leader>X', ':%bd!<cr>', { desc = 'Force close all buffers' })
+
 -- Remove search highlight.
 vim.keymap.set('n', '<leader><space>', ':nohlsearch<cr>', { desc = 'Remove search highlight' })
 
