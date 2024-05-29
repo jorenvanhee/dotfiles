@@ -50,17 +50,20 @@ return {
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
         ['<Tab>'] = cmp.mapping(function(fallback)
+          if luasnip.expandable() then
+            luasnip.expand()
+          else
+            fallback()
+          end
+        end, { 'i', 's' }),
+        ['<C-l>'] = cmp.mapping(function()
             if luasnip.locally_jumpable() then
                 luasnip.jump(1)
-            else
-                fallback()
             end
         end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
+        ['<C-h>'] = cmp.mapping(function()
             if luasnip.locally_jumpable(-1) then
                 luasnip.jump(-1)
-            else
-                fallback()
             end
         end, { 'i', 's' }),
       }),
