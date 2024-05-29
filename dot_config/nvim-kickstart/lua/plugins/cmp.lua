@@ -51,7 +51,7 @@ return {
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
         ['<Tab>'] = cmp.mapping(function(fallback)
             if luasnip.locally_jumpable() then
-                luasnip.jump()
+                luasnip.jump(1)
             else
                 fallback()
             end
