@@ -28,7 +28,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Tab navigation.
 vim.keymap.set('n', '<leader>1', "1gt", { desc = "Tab 1" })
 vim.keymap.set('n', '<leader>2', "2gt", { desc = "Tab 2" })
-vim.keymap.set('n', '<Leader>3', '3lt', { desc = "Tab 3" })
+vim.keymap.set('n', '<Leader>3', '3gt', { desc = "Tab 3" })
 vim.keymap.set('n', '<leader>4', "4gt", { desc = "Tab 4" })
 vim.keymap.set('n', '<leader>5', "5gt", { desc = "Tab 5" })
 vim.keymap.set('n', '<leader>6', "6gt", { desc = "Tab 6" })
