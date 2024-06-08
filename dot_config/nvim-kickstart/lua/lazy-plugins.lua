@@ -50,6 +50,8 @@ require('lazy').setup({
 
   require 'plugins/gitsigns',
 
+  require 'plugins/oil',
+
   -- todo: treesitter, ... (see packer.lua)
 
   -- require 'kickstart/plugins/conform',
