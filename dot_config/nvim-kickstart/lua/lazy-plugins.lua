@@ -12,7 +12,6 @@
 require('lazy').setup({
   'tpope/vim-sleuth',
   'tpope/vim-abolish',
-  'lumiliet/vim-twig',
 
   -- Priority forces loading certain plugins first. Default priority is 50.
   -- It's recommended to set this to a high number for colorschemes.
