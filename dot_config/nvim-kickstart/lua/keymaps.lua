@@ -4,6 +4,9 @@
 -- Go to normal mode.
 vim.keymap.set('i', 'jf', '<esc>')
 
+-- Diagnostics.
+vim.keymap.set('n', '<leader>sd', vim.diagnostic.open_float, { desc = '[S]how [D]iagnostic error messages' })
+
 -- Goto beginning and end of line, inspired by Helix editor.
 vim.keymap.set({ 'n', 'x' }, 'gh', '^', { desc = 'Go to the start of the line' })
 vim.keymap.set({ 'n', 'x' }, 'gl', '$', { desc = 'Go to the end of the line' })
