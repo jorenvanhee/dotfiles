@@ -24,5 +24,6 @@ return {
     vim.keymap.set('n', '<space>/', builtin.live_grep, { desc = 'Global search in workspace folder' })
     vim.keymap.set('n', '<space>\'', builtin.resume, { desc = 'Open last picker' })
     vim.keymap.set('n', '<space>?', builtin.commands, { desc = 'Open command palette' })
+    vim.keymap.set('n', '<space>g', builtin.git_status, { desc = 'Open git status picker' })
   end,
 }
