@@ -39,6 +39,12 @@ vim.keymap.set('n', '<leader>7', "7gt", { desc = "Tab 7" })
 vim.keymap.set('n', '<leader>8', "8gt", { desc = "Tab 8" })
 vim.keymap.set('n', '<leader>9', "9gt", { desc = "Tab 9" })
 
+-- Quickfix list navigation.
+vim.keymap.set('n', '[q', ':cprevious<cr>zz', { desc = 'Previous quickfix list item' })
+vim.keymap.set('n', ']q', ':cnext<cr>zz', { desc = 'Next quickfix list item' })
+vim.keymap.set('n', '[Q', ':cfirst<cr>zz', { desc = 'First quickfix list item' })
+vim.keymap.set('n', ']Q', ':clast<cr>zz', { desc = 'Last quickfix list item' })
+
 -- Center the screen after navigating to the next and previous search results.
 vim.keymap.set('n', 'n', 'nzz', { desc = 'Go to next search result and center' })
 vim.keymap.set('n', 'N', 'Nzz', { desc = 'Go to previous search result and center' })
