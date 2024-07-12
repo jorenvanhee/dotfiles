@@ -53,6 +53,8 @@ require('lazy').setup({
 
   require 'plugins/conform',
 
+  require 'plugins/treesj',
+
   -- todo: treesitter, ... (see packer.lua)
 
   -- require 'kickstart/plugins/conform',
