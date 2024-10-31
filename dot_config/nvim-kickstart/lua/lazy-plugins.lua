@@ -53,6 +53,8 @@ require('lazy').setup({
 
   require 'plugins/conform',
 
+  require 'plugins/dap',
+
   require 'plugins/treesj',
 
   -- todo: treesitter, ... (see packer.lua)
