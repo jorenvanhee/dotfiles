@@ -31,7 +31,7 @@ require('lazy').setup({
 
   { 'numToStr/Comment.nvim', opts = {} },
 
-  { 'aserowy/tmux.nvim', opts = {} },
+  { 'aserowy/tmux.nvim', opts = { resize = { enable_default_keybindings = false } } },
 
   require 'plugins/nvim-tree',
 
@@ -56,6 +56,8 @@ require('lazy').setup({
   require 'plugins/dap',
 
   require 'plugins/treesj',
+
+  require 'plugins/harpoon',
 
   -- todo: treesitter, ... (see packer.lua)
 
