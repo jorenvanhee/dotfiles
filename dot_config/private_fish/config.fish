@@ -14,6 +14,7 @@ abbr --add cat bat
 # Aliases.
 alias sf="bin/console"
 alias a="php artisan"
+alias nvim="nvim --listen (nvim-server-pipe)"
 
 # Git abbreviations (on top of the ones provided by jhillyerd/plugin-git).
 abbr --add gs git status -s

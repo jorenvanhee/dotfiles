@@ -1,0 +1,9 @@
+os:
+  edit: 'nvim --server $(nvim-server-pipe) --remote {{filename}}'
+  open: 'nvim --server $(nvim-server-pipe) --remote {{filename}}'
+
+# If true, display a confirmation when subprocess terminates. This allows you to
+# view the output of the subprocess before returning to Lazygit.
+#
+# Disabled so that I don't need to press enter after using the edit command.
+promptToReturnFromSubprocess: false

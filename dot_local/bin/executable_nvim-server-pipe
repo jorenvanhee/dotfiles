@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Are we inside of tmux?
+if [ "$TERM_PROGRAM" = tmux ]; then
+    pipe_name=$(tmux display-message -p "for-tmux-session-#{session_name}")
+else
+    pipe_name="default"
+fi
+
+echo "${HOME}/.cache/nvim/server-${pipe_name}.pipe"
