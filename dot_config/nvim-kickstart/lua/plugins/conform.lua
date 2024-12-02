@@ -14,7 +14,7 @@ return {
   opts = {
     formatters_by_ft = {
       -- Use a sub-list to run only the first available formatter
-      typescript = { { "prettierd", "prettier" }, { "eslint_d", "eslint" } },
+      typescript = { { "biome-check" }, { "prettierd", "prettier" }, { "eslint_d", "eslint" } },
     },
   },
 }
