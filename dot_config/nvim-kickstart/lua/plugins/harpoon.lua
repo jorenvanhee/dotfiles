@@ -2,10 +2,15 @@ return {
   'ThePrimeagen/harpoon',
   branch = 'harpoon2',
   dependencies = { 'nvim-lua/plenary.nvim' },
-  config = function ()
+  config = function()
     local harpoon = require('harpoon')
 
-    harpoon.setup()
+    harpoon.setup({
+      global_settings = {
+        -- set marks specific to each git branch inside git repository
+        mark_branch = true,
+      },
+    })
 
     vim.keymap.set('n', '<leader>a', function() harpoon:list():add() end, { desc = '' })
     vim.keymap.set('n', '<space>h', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = '' })
