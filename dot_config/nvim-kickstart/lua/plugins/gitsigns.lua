@@ -16,6 +16,7 @@ return {
           vim.cmd.normal({']c', bang = true})
         else
           gitsigns.nav_hunk('next')
+          vim.api.nvim_feedkeys('zz', 'n', false);
         end
       end)
 
@@ -24,6 +25,7 @@ return {
           vim.cmd.normal({'[c', bang = true})
         else
           gitsigns.nav_hunk('prev')
+          vim.api.nvim_feedkeys('zz', 'n', false);
         end
       end)
 
