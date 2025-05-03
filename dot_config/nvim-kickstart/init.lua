@@ -7,6 +7,12 @@ vim.g.maplocalleader = ','
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
+vim.filetype.add({
+  extension = {
+    twig = "twig.html",
+  },
+})
+
 -- [[ Setting options ]]
 require 'options'
 

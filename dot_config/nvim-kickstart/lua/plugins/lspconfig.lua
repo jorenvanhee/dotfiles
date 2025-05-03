@@ -3,8 +3,8 @@ return {
   dependencies = {
     { 'williamboman/mason.nvim', config = true },
     'williamboman/mason-lspconfig.nvim',
-    { 'j-hui/fidget.nvim', opts = {} },
-    { 'folke/neodev.nvim', opts = {} },
+    { 'j-hui/fidget.nvim',       opts = {} },
+    { 'folke/neodev.nvim',       opts = {} },
   },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -28,6 +28,10 @@ return {
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
       end,
     })
+
+    local mason_registry = require('mason-registry')
+    local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
+        '/node_modules/@vue/language-server'
 
     -- LSP servers and clients are able to communicate to each other what features they support.
     --  By default, Neovim doesn't support everything that is in the LSP specification.
@@ -75,6 +79,34 @@ return {
       },
 
       biome = {},
+
+      tailwindcss = {
+        -- Manually added: html.twig
+        filetypes = { "aspnetcorerazor", "astro", "astro-markdown", "blade", "clojure", "django-html", "htmldjango", "edge", "eelixir", "elixir", "ejs", "erb", "eruby", "gohtml", "haml", "handlebars", "hbs", "html", "html-eex", "heex", "jade", "leaf", "liquid", "markdown", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css", "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascript", "javascriptreact", "reason", "rescript", "typescript", "typescriptreact", "vue", "svelte", "html.twig", "twig.html" },
+        init_options = {
+          userLanguages = {
+            ["html.twig"] = "html",
+            ["twig.html"] = "html",
+          },
+        },
+      },
+
+      twiggy_language_server = {
+        filetypes = { "twig", "twig.html" },
+      },
+
+      ts_ls = {
+        init_options = {
+          plugins = {
+            {
+              name = '@vue/typescript-plugin',
+              location = vue_language_server_path,
+              languages = { 'vue' },
+            },
+          }
+        },
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+      }
     }
 
     -- Ensure the servers and tools above are installed
