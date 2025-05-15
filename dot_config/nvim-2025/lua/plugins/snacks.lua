@@ -1,7 +1,26 @@
 return {
   'folke/snacks.nvim',
   opts = {
-    picker = {},
+    picker = {
+      win = {
+        input = {
+          keys = {
+            ["<c-f>"] = { "list_scroll_down", mode = { "i", "n" } },
+            ["<c-b>"] = { "list_scroll_up", mode = { "i", "n" } },
+            ["<c-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
+            ["<c-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
+          },
+        },
+        list = {
+          keys = {
+            ["<c-f>"] = "list_scroll_down",
+            ["<c-b>"] = "list_scroll_up",
+            ["<c-d>"] = "preview_scroll_down",
+            ["<c-u>"] = "preview_scroll_up",
+          },
+        },
+      },
+    },
     explorer = {},
   },
   keys = {
@@ -12,6 +31,9 @@ return {
     { '<space>/', function() Snacks.picker.grep() end, desc = 'Search picker' },
     { '<space>\'', function() Snacks.picker.resume() end, desc = 'Open last picker' },
     { 'gr', function() Snacks.picker.lsp_references() end, desc = 'References' },
+    { 'gd', function() Snacks.picker.lsp_definitions() end, desc = 'Goto definition' },
+    { 'gt', function() Snacks.picker.lsp_type_definitions() end, desc = 'Goto type definition' },
+    { '<space>s', function() Snacks.picker.lsp_symbols() end, desc = 'Symbols' },
     { '<leader>bd', function() Snacks.bufdelete() end, desc = 'Buffer delete' },
     { '<leader>ba', function()
       Snacks.bufdelete.all()

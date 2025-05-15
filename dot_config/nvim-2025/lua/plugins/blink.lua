@@ -2,6 +2,9 @@ return {
   'saghen/blink.cmp',
   version = '1.*',
   opts = {
+    completion = {
+      list = { selection = { preselect = false, auto_insert = true } },
+    },
     signature = {
       enabled = true,
       window = {
@@ -9,7 +12,7 @@ return {
       },
     },
     keymap = {
-      ['<c-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+      ['<c-s>'] = { 'show', 'show_documentation', 'hide_documentation' },
       ['<c-f>'] = { 'select_and_accept' },
 
       ['<c-p>'] = { 'select_prev', 'fallback_to_mappings' },

@@ -11,7 +11,7 @@ return {
       ["g?"] = { "actions.show_help", mode = "n" },
       ["<cr>"] = "actions.select",
       ["<c-v>"] = { "actions.select", opts = { vertical = true } },
-      ["<c-x>"] = { "actions.select", opts = { horizontal = true } },
+      ["<c-s>"] = { "actions.select", opts = { horizontal = true } },
       ["<c-t>"] = { "actions.select", opts = { tab = true } },
       ["<c-c>"] = { "actions.close", mode = "n" },
       ["-"] = { "actions.parent", mode = "n" },

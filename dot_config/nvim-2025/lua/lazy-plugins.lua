@@ -1,15 +1,17 @@
 -- todo:
--- [ ] <c-x> to split horizontally in pickers
+-- [x] <c-x> to split horizontally in pickers
 -- [ ] lsp pickers
--- [ ] autopairs
--- [ ] nvim-surround
--- [ ] gitsigns
+-- [x] autopairs
+-- [x] nvim-surround
+-- [x] gitsigns
 -- [ ] conform (linting ?)
 -- [ ] dap
--- [ ] comment.nvim
+-- [x] comment.nvim
 -- [ ] organize pickers
 -- [x] signature (blink)
 -- [x] something to close all buffers (see snacks tools)
+-- [ ] lazygit
+-- [ ] tmux sessionizer
 require('lazy').setup({
   'tpope/vim-sleuth',
   'tpope/vim-abolish',
@@ -23,4 +25,9 @@ require('lazy').setup({
   require 'plugins/blink',
   require 'plugins/flash',
   require 'plugins/harpoon',
+  require 'plugins/comment',
+  require 'plugins/autopairs',
+  require 'plugins/surround',
+  require 'plugins/gitsigns',
+  require 'plugins/conform',
 })

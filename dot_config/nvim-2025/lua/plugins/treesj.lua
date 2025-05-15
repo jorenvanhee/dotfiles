@@ -5,7 +5,9 @@ return {
   config = function ()
     local treesj = require('treesj')
 
-    treesj.setup({})
+    treesj.setup({
+      use_default_keymaps = false,
+    })
 
     vim.keymap.set('n', 'gJ', treesj.join, { desc = 'Join lines' })
     vim.keymap.set('n', 'gS', treesj.split, { desc = 'Split into multiple lines' })
