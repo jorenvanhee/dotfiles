@@ -30,7 +30,7 @@ return {
     { '<space>g', function() Snacks.picker.git_status() end, desc = 'Git status picker' },
     { '<space>/', function() Snacks.picker.grep() end, desc = 'Search picker' },
     { '<space>\'', function() Snacks.picker.resume() end, desc = 'Open last picker' },
-    { 'gr', function() Snacks.picker.lsp_references() end, desc = 'References' },
+    { 'grr', function() Snacks.picker.lsp_references() end, desc = 'References' },
     { 'gd', function() Snacks.picker.lsp_definitions() end, desc = 'Goto definition' },
     { 'gt', function() Snacks.picker.lsp_type_definitions() end, desc = 'Goto type definition' },
     { '<space>s', function() Snacks.picker.lsp_symbols() end, desc = 'Symbols' },
