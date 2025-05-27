@@ -1,6 +1,7 @@
 return {
   'saghen/blink.cmp',
   version = '1.*',
+  dependencies = { 'rafamadriz/friendly-snippets' },
   opts = {
     completion = {
       list = { selection = { preselect = false, auto_insert = true } },
