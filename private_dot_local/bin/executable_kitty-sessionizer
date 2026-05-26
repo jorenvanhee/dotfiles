@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+
+# Fuzzy-pick a kitty session to open.
+#
+# The picker combines your projects from PROJECTS_DIR with previously created
+# sessions from SESSIONS_DIR. Selecting a project opens a session in that
+# folder. You can also type an arbitrary path to start a session there.
+# Typing a name that doesn't match a project or path creates a new session
+# with ~ as the working directory. New sessions are saved to SESSIONS_DIR
+# so they appear in the picker next time.
+
+PROJECTS_DIR="$HOME/code"
+SESSIONS_DIR="$HOME/.config/kitty/sessions"
+
+picker_options_from_projects_folder() {
+  find "$PROJECTS_DIR" -maxdepth 1 -mindepth 1 -type d | sort
+}
+
+picker_options_from_session_files() {
+  find "$SESSIONS_DIR" -name "*.kitty-session" -exec sed -n 's/^# kitty-session: //p' {} +
+}
+
+picker_options() {
+  {
+    picker_options_from_session_files
+    picker_options_from_projects_folder
+  } | awk '!seen[$0]++' # deduplicate while preserving order
+}
+
+prettify_path() {
+  sed "s|^$HOME|~|"
+}
+
+expand_path() {
+  sed "s|^~|$HOME|"
+}
+
+open_picker() {
+  local picked_option
+
+  # --print-query makes fzf output the typed query on line 1 and the selected match on line 2.
+  # tail -n 1 grabs the match, or the typed query if no match was found.
+  picked_option=$(picker_options | prettify_path | fzf --print-query | tail -n 1)
+
+  echo "$picked_option" | expand_path
+}
+
+create_safe_session_filename() {
+  local session_filename="$1"
+
+  session_filename="${session_filename%/}"      # strip trailing slash
+  session_filename="${session_filename#/}"      # strip leading slash
+  session_filename="${session_filename//\//-}"  # replace / with -
+  session_filename="${session_filename,,}"      # lowercase
+
+  echo "$session_filename"
+}
+
+find_or_create_session_file() {
+  local session_name="$1"
+  local cwd safe_session_filename session_file_path
+
+  if test -d "$session_name"; then
+    cwd=$session_name
+  else
+    cwd=$HOME
+  fi
+
+  safe_session_filename=$(create_safe_session_filename "$session_name")
+  session_file_path="$SESSIONS_DIR/${safe_session_filename}.kitty-session"
+
+  if ! test -f "$session_file_path"; then
+    mkdir -p "$SESSIONS_DIR"
+
+    {
+      echo "# kitty-session: $session_name"
+      echo "cd $cwd"
+      echo "launch"
+      echo "focus"
+      echo "focus_os_window"
+    } > "$session_file_path"
+  fi
+
+  echo "$session_file_path"
+}
+
+find_or_create_session() {
+  local session_name session_filename
+
+  session_name=$(open_picker)
+
+  if test -z "$session_name"; then
+    return
+  fi
+
+  session_file_path=$(find_or_create_session_file "$session_name")
+
+  kitten @ action goto_session "$session_file_path"
+}
+
+find_or_create_session
